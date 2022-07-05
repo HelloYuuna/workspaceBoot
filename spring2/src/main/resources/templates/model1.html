@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- 모델 객체를 사용하여 값 넘겨받기 -->
+<!-- xmlns 자바 코드를 사용할수 있게 해줌 페이지를 동적으로 -->
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>model.html</title>
+</head>
+<body>
+    <h2>Model / Thymeleaf</h2>
+    <p>자바 ModelController에서 선언하지않은 변수이므로 아무것도 나오지않는다</p>
+    <pre>[[${abc}]]</pre>
+    <p>[[${abc}]]</p>
+
+    <p>[[${string}]]</p>
+    <p>[[${number}]]</p>
+    <p>[[${number + 1}]]</p>
+    <p>[[${person}]]</p>
+    <p>[[${person.name}]]</p>
+</body>
+</html>
