@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Identifier</title>
+    <link rel="stylesheet" href="../id/identifier.css">
+    <script src="../id/identifier.js"></script>
+</head>
+<body>
+    <h2>Identifier</h2>
+    <div class="container">
+        <form action="id/idResult" method="post" onsubmit="return check()">
+            <table>
+                <tr>
+                    <th>
+                        <label for="usrname">이름</label>
+                    </th>
+                    <td>
+                       <input type="text" name="usrname" id="usrname">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="myId">주민등록번호</label>
+                    </th>
+                    <td>
+                      <input type="text" name="myId" id="myId">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="submit" colspan="2">
+                        <input type="submit" value="입력">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

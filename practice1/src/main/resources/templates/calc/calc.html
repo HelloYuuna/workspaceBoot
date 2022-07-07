@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculation</title>
+    <link rel="stylesheet" href="../calc.css">
+    <script src="../calc.js"></script>
+</head>
+<body>
+    <h2>Calculation</h2>
+    <!--  onsubmit: true false 를 리턴, true일경우 action 동작 -->
+    <form action="calc/calcResult" method="post" onsubmit="return check()">
+        <table>
+            <tr>
+                <td>
+                    <label for="leftNum">
+                        <input type="text" name="leftNum" id="leftNum">
+                    </label>
+                </td>
+                <td>
+                    <label for="oper">
+                        <select name="oper" id="oper">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="/">/</option>
+                            <option value="*">*</option>
+                        </select>
+                    </label>
+                </td>
+                <td>
+                    <label for="rightNum">
+                        <input type="text" name="rightNum" id="rightNum">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="submit" value="계산">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
