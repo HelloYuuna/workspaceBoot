@@ -1,11 +1,15 @@
 package net.softsociety.spring2.controller.vo;
 
+import lombok.Data;
+
 /**
  * projectName     :spring2
  * fileName        :Person
  * author          :yuuna
  * since           :2022/07/05
  */
+
+@Data
 public class Person {
     String name;
     String phone;

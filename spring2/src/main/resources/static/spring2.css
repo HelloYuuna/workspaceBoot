@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+ul {
+    font-size: 15px;
+    line-height: 1;
+}
+
+a,
+a.link {
+    /* 밑줄 제거 */
+    text-decoration: none;
+
+}
+/* 디폴트 색상 */
+a:link {
+    color: #ff9f1c;
+}
+
+/* 방문한 색 */
+a:visited {
+    color: #e85d04;
+}
+
+/* 마우스 올렸을 때 hover */
+a:hover {
+    color: #ee6c4d;
+    font-weight: bold;
+    background-color: #fdffb6;
+}
+
+/* 클릭했을 때 */
+a:active {
+    color: #00bbf9;
+}

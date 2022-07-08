@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -43,10 +42,13 @@ public class CookieController {
         System.out.println("쿠키 삭제!");
         Cookie c1 = new Cookie("str",null);
         Cookie c2 = new Cookie("num",null);
+        Cookie cookie = new Cookie("cnt", null);
         c1.setMaxAge(0);
         c2.setMaxAge(0);
+        cookie.setMaxAge(0);
         response.addCookie(c1);
         response.addCookie(c2);
+        response.addCookie(cookie);
         return "redirect:/";
     }
 
@@ -68,17 +70,17 @@ public class CookieController {
      * 쿠키에 증가된 방문횟수를 저장하여 클라이언트로 보냄
      * 방문 횟수를 model에 저장하여 html 페이지에서 환영 문구 출력
      */
-    /* 방문횟수 */
     @GetMapping("/ck/cookie")
     public String cntByVisiting(
             @CookieValue(value = "cnt", defaultValue = "0") int cnt,
             Model model, HttpServletResponse response) {
 
-        model.addAttribute("cnt", cnt++); //cnt에 넣고나서 ++
+        model.addAttribute("cnt", ++cnt); //cnt에 넣고나서 ++
 
         Cookie cookie = new Cookie("cnt", String.valueOf(cnt));
-//        Cookie cookie = new Cookie("cnt", String.valueOf(++cnt));
-        cookie.setMaxAge(60*60*24*3);
+//        Cookie cookie = new Cookie("cnt", Integer.toString(cnt));
+//        Cookie cookie = new Cookie("cnt", String.valueOf(++cnt));     // 여기서 ++을 사용해도 됨
+        cookie.setMaxAge(60*60*24*3);                                   // 지정하지않으면 웹브라우저 종료시 사라짐
         response.addCookie(cookie);
 
         return "/cookie";

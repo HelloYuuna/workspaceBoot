@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tyhmeleaf1</title>
+</head>
+<body>
+    <h2>Thymeleaf 사용</h2>
+    <p>[[${str}]]</p>
+    <p>[[${num1}]]</p>
+    <p>[[${member}]]</p>
+    <p>[[${tag}]]</p>
+    <p>[[${url}]]</p>
+
+<!--    텍스트 출력-->
+    <p th:text="${str}"></p>
+    <p th:text="${tag}"></p>
+<!--    태그 출력-->
+    <p th:utext="${str}"></p>
+    <p th:utext="${tag}"></p>
+</body>
+</html>
