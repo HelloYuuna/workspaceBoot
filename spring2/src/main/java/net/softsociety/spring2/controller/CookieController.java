@@ -68,19 +68,20 @@ public class CookieController {
      * 쿠키에 증가된 방문횟수를 저장하여 클라이언트로 보냄
      * 방문 횟수를 model에 저장하여 html 페이지에서 환영 문구 출력
      */
+    /* 방문횟수 */
     @GetMapping("/ck/cookie")
-    public String cookie(
-            @CookieValue(value = "visitCnt", defaultValue = "0") int visitCnt,
-            Model model,
-            HttpServletResponse response) {
-        if(visitCnt == 0) {
+    public String cntByVisiting(
+            @CookieValue(value = "cnt", defaultValue = "0") int cnt,
+            Model model, HttpServletResponse response) {
 
-        }
-        visitCnt++;
-        System.out.println(visitCnt);// 값이 올라가는지 확인
-        Cookie cookie = new Cookie("count", String.valueOf(visitCnt));
+        model.addAttribute("cnt", cnt++); //cnt에 넣고나서 ++
+
+        Cookie cookie = new Cookie("cnt", String.valueOf(cnt));
+//        Cookie cookie = new Cookie("cnt", String.valueOf(++cnt));
+        cookie.setMaxAge(60*60*24*3);
         response.addCookie(cookie);
-        model.addAttribute(cookie);
-        return "cookie";
+
+        return "/cookie";
     }
+
 }
