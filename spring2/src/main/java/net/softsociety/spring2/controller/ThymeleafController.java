@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.softsociety.spring2.controller.vo.Member;
 
+import java.util.Date;
+
 /**
  * projectName     :spring2
  * fileName        :ThymeleafController
@@ -22,8 +24,9 @@ public class ThymeleafController {
 
     @GetMapping("thymeleaf1")
     public String thymeleaf1(Model model) {
+        /* 로컬 변수 : model이나 session에 담지않으면 메소드 종료시 사라짐 */
         String str = "abcd";
-        int num1 = 3;
+        int num1 = 123;
         Member member = new Member("abc", "111-1111", "차슈", "서울시");
         String tag = "<marquee>tag가 포함된 문자열</marquee>";
         String url = "https://www.naver.com";
@@ -34,6 +37,16 @@ public class ThymeleafController {
         model.addAttribute("member",member);
         model.addAttribute("tag",tag);
         model.addAttribute("url",url);
+
+        int n1 = 100000;
+        double n2 = 123.45678;
+        double n3 = 0.5;
+        Date date = new Date();                     //생성시점의 날짜정보가 담김
+
+        model.addAttribute("inum",n1);
+        model.addAttribute("dnum",n2);
+        model.addAttribute("dnum2",n3);
+        model.addAttribute("curntDate", date);
 
         return "/thview/thymeleaf1";
     }

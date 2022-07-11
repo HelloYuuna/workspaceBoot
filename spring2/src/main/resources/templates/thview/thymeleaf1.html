@@ -3,20 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <title>Tyhmeleaf1</title>
+    <link rel="stylesheet" href="" th:href="@{/spring2.css}">
+    <script src="" th:src="@{/thymeleaf.js}"></script>
 </head>
 <body>
     <h2>Thymeleaf 사용</h2>
+    <h3>문자열 출력</h3>
     <p>[[${str}]]</p>
     <p>[[${num1}]]</p>
     <p>[[${member}]]</p>
     <p>[[${tag}]]</p>
     <p>[[${url}]]</p>
 
-<!--    텍스트 출력-->
+<!-- 텍스트 출력 -->
     <p th:text="${str}"></p>
     <p th:text="${tag}"></p>
-<!--    태그 출력-->
-    <p th:utext="${str}"></p>
+
+<!-- 태그 출력-->
+    <p th:utext="${str}">p태그 사이의 문자열</p>
     <p th:utext="${tag}"></p>
+
+<!-- 파서 주서-->
+    <h3>타임리프식 파서 주석</h3>
+    <p>서버쪽에서만 보인다</p>
+    <!--/*-->
+    <span>이것은 두줄 주석</span>
+    <!--*/-->
+<!--/* <p>[[${str}]]</p> */-->
+    <p th:utext="${str}"></p>
+<!--/* <p>[[${tag}]]</p> */-->
+    <p th:utext="${tag}"></p>
+
+    <h3>연산자</h3>
+    <p th:text = "${num1}">1000</p>
+
+    <!-- 산술연산 가능 + - * / % -->
+    <p th:text = "${num1 + 1}">1000</p>
+
+    <!-- 비교연산자 < > <= => != ==
+        꺽쇄 기호가 HTML 태그에 악영향을 줄 수 있으므로
+        영문자 비교연산자 사용 lt gt le ge ne eq
+    -->
+    <p th:text = "${num1 > 100}">true</p>
+    <p th:text = "${num1 gt 100}">true</p>
+
+    <!-- 논리 연산자 and or not -->
+    <p th:text = "${num1 >= 1 and num1 <= 100}">true</p>
+    <p th:text = "${num1 ge 1 and num1 le 100}">true</p>
+    <p th:text = "${num1 % 3 eq 0}">true</p>
+
+    <h3>경로 생성과 하이퍼링크</h3>
+    <!-- 절대 / 상대경로 -->
+    <p><a href="https://www.naver.com">네이버로 이동</a></p>
+    <p><a href="../param/param1">Get방식의 form으로 이동</a></p>
+    <p>[[@{/param/param1}]]</p>
+
+    <!-- 절대경로일 경우 properties에서 path를 변경할 경우 오류발생 -->
+    <p><a href="/spring2/param/param1">Get방식의 form으로 이동</a></p>
+    <!-- 뒤쪽 th 속성이 실행됨 : 유동적으로 절대경로 생성 -->
+    <p><a href="/spring2/param/param1" th:href="@{/param/param1}">Get방식의 form으로 이동</a></p>
+    <p><img src="" alt = "neko" th:src="@{/images/cat.jpeg}"></p>
+
+    <h3>객체 출력</h3>
+    <p th:text="${member}">객체 출력</p>
+    <p th:text="${member.id}">객체 멤버 출력</p>
+    <ul th:object="${member}">
+        <li th:text="*{id}">아이디</li>
+        <li th:text="*{name}">이름</li>
+        <li th:text="*{password}">비밀번호</li>
+    </ul>
+
+    <h3>포매팅(계층적)</h3>
+    <p th:text="${inum}"></p>
+    <p th:text="${dnum}"></p>
+    <p th:text="${dnum2}"></p>
+    <p th:text="${curntDate}">현재 날짜 정보</p>
+
+    <p th:text="${#numbers.formatInteger(inum, 10)}">10자리표시</p>
+    <p th:text="${#numbers.formatInteger(inum, 3, 'COMMA')}">3자리마다 쉼표</p><!-- whitespace, none -->
+    <p th:text="${#numbers.formatDecimal(dnum, 3, 'COMMA', 2, 'POINT')}">3자리마다 쉼표, 소수점아래 2자리</p>
+    <p th:text="${#numbers.formatPercent(dnum2, 0, 2)}">퍼센트</p>
+
+    <!--
+    왠만하면 데이터 가공은 DB에서 가공해서 보낼것
+    MM 월 month mm 분
+    -->
+    <p th:text="${#dates.format(curntDate, 'yyyy/MM/dd')}">날짜 형식 지정</p>
+
 </body>
 </html>
