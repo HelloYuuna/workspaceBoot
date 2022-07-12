@@ -7,22 +7,24 @@ package net.scit.practice1.controller;
  * since           :2022/07/06
  */
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
+@Slf4j
 @Controller
 public class IdController {
 
-
     @GetMapping("/prac/identifier")
     public String identifier() {
-        return "id/identifier";                        //return 은 분류한 폴더위치로 따라감
+        return "/id/identifier";                        //return 은 분류한 폴더위치로 따라감
     }
 
     @PostMapping("/prac/idResult")
@@ -33,10 +35,10 @@ public class IdController {
 //        근래에는 지양하는 Calendar 와 Date 객체
 //        Calendar calendar = Calendar.getInstance();
 //        int year = calendar.get(Calendar.YEAR);
+        LocalDate ld = LocalDate.now();
+        int year = ld.getYear();
+        log.info("year" + year);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");     // 날짜 서식 지정
-        System.out.println(sdf.format(new Date()));
-
-        return "id/idResult";
+        return "/id/idResult";
     }
 }
