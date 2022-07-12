@@ -20,9 +20,9 @@ import java.util.Date;
 @Slf4j
 @Controller
 @RequestMapping("/th")              //중간 경로 공통적으로 설정, 전부 /th 아래로 경로가 설정됨
-public class ThymeleafController {
+public class Thymeleaf1Controller {
 
-    @GetMapping("thymeleaf1")
+    @GetMapping("/thymeleaf1")
     public String thymeleaf1(Model model) {
         /* 로컬 변수 : model이나 session에 담지않으면 메소드 종료시 사라짐 */
         String str = "abcd";
@@ -51,9 +51,4 @@ public class ThymeleafController {
         return "/thview/thymeleaf1";
     }
 
-    @GetMapping("thymeleaf2")
-    public String thymeleaf2() {
-
-        return "/thview/thymeleaf2";
-    }
 }

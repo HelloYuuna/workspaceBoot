@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Thymeleaf2</title>
+    <link rel="stylesheet" href="" th:href="@{/spring2.css}">
 </head>
 <body>
     <h2>Thymeleaf2</h2>
+    <h3>문자열</h3>
+    <p th:text="${str}">문자열 출력</p>
+    <p th:text="${str + 'aaaa'}">문자열 더하기</p>
+    <p th:text="|${str} aaa 111 999|">여러 문자열 합치기 |사용</p>
+<!--  true false 로 리턴  -->
+    <p th:text="${str == '문자열'}">문자열 동등비교</p>
+    <p th:text="${str.equals('문자열')}">문자열 동등비교</p>
+    <p th:text="${str != '문자열'}">문자열 동등비교</p>
+<!-- #string 객체 -->
+    <p th:text="${#strings.isEmpty(str)}">isEmpty? false</p>
+    <p th:text="${#strings.substring(str,1,2)}">substirng 1번째에서 2번째 전 '자' (0부터 시작)</p>
+    <p th:text="${#strings.contains(str,'문')}">contains '문' 문자 포함? true</p>
+    <p th:text="${#strings.listSplit(values,',')[0]}">listSplit ,를 기준으로 문자열을 잘라 배열생성 > 0번째 오브젝트 읽기</p>
+
+    <h3>리스트 & 맵</h3>
+<!--    리스트 -->
+    <p th:text="${#lists.size(list)}">size: 3</p>
+    <p th:text="${#lists.contains(list,'CSS')}">contains CSS?: false</p>
+<!--    맵 -->
+    <p th:text="${#maps.size(map)}">size: 2</p>
+    <p th:text="${#maps.containsKey(map,'name')}">containsKey map: true</p>
+
+    <h3>제어문</h3>
+<!--    if unless(not) -->
+    <div th:if="${str == '문자열'}">true인 경우 보이는 부분(이것만보임)</div>
+    <div th:unless="${str == '문자열'}">false인 경우 보이는 부분</div>
+
+    <div th:if="${num == 1}">한놈</div>
+    <div th:if="${num == 2}">두시기</div>
+    <div th:if="${num == 3}">석삼</div>
+    <div th:if="${num lt 1 and num gt 3}">다른놈</div>
+<!--    switch case : default 는 * 로 표시 -->
+    <div th:switch="${num}">
+        <p th:case="1">하나</p>
+        <p th:case="2">둘</p>
+        <p th:case="3">셋</p>
+        <p th:case="*">그 밖의 숫자</p>
+    </div>
+
+    <h3>반복문</h3>
+<!--    반복해서 item변수에 list 콜렉션의 값을 담아 출력 -->
+    <h2>테이블1 * 3</h2>
+    <table th:each="item : ${list}">
+        <tr>
+            <td><span th:text="${item}"></span></td>
+        </tr>
+    </table>
+    <h2>테이블2 tr*3</h2>
+    <table>
+        <tr th:each="item : ${list}">
+            <td><span th:text="${item}"></span></td>
+        </tr>
+    </table>
+    <h2>테이블3 td*3</h2>
+    <table>
+        <tr>
+            <td th:each="item : ${list}"><span th:text="${item}"></span></td>
+        </tr>
+    </table>
 </body>
 </html>

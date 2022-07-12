@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+h2 {
+    color: #fff;
+    background: linear-gradient(30deg, #39A9DB, #1C77C3);
+    width: 80%;
+    padding: 10px 0;
+    text-align: center;
+}
+
+p {
+    display: inline-block;
+    height: 20px;
+    color: #1C77C3;
+    background-color: #FDEFE2;
+}
