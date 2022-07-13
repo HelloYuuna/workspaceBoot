@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+객체 : #{변수명} getter 를 사용해서 받아옴
+자료형 : 단순한 변수
+hashmap : key 키 값
+ -->
+<mapper namespace="net.scit.spring3.dao.PersonDAO">
+    <insert id="insertPerson" parameterType="Person">
+        insert into person values (#{name}, #{age})
+    </insert>
+</mapper>
