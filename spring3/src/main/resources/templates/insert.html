@@ -4,31 +4,36 @@
     <meta charset="UTF-8">
     <title>insert</title>
     <script src="" th:src="@{/js/personCheck.js}"></script>
+    <link rel="stylesheet" href="./css/person.css">
 </head>
 <body>
-    <h1>[ 저장 ]</h1>
-    <div>
-        <form action="" th:action="@{/insertForm}" method="post" onsubmit="return check();">
-            <table>
-                <tr>
-                    <td>
-                        <label for="name">이름</label>
-                        <input type="text" name="name" id="name">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="age">나이</label>
-                        <input type="text" name="age" id="age">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" value="전송">
-                    </td>
-                </tr>
-            </table>
-        </form>
+    <div class="container">
+        <h1>[ 저장 ]</h1>
+            <form action="" th:action="@{/insert}" method="post" onsubmit="return check();">
+                <table>
+                    <tr>
+                        <th>
+                            <label for="name">이름</label>
+                        </th>
+                        <td>
+                            <input type="text" name="name" id="name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="age">나이</label>
+                        </th>
+                        <td>
+                            <input type="text" name="age" id="age">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="전송">
+                        </td>
+                    </tr>
+                </table>
+            </form>
     </div>
 </body>
 </html>

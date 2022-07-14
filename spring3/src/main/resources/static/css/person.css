@@ -1,0 +1,49 @@
+.container {
+    width: 300px;
+    text-align: center;
+    margin: auto;
+}
+
+h1 {
+    color: #cdb4db;
+}
+
+table,th, td {
+    margin: auto;
+    /*border: 1px dotted #847f8c;*/
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+th {
+    width: 50px;
+    background: #cdb4db;
+    color: #5b5b5b;
+}
+
+td {
+    color: #757575;
+}
+
+label {
+    display: inline-block;
+    width: 30px;
+    margin: 5px auto;
+}
+
+input[type="text"]:focus {
+    background: #cdb4db;
+}
+
+input[type="submit"] {
+    padding: 5px 10px;
+    border: 1px solid #cdb4db;
+    border-radius: 5px;
+    color: #5b5b5b;
+    font-size: 15px;
+    font-weight: 600;
+    background: linear-gradient(0deg, #cdb4db,#ffc8dd 15%);
+}
+
+
+

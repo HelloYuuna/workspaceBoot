@@ -8,6 +8,15 @@ hashmap : key 키 값
  -->
 <mapper namespace="net.scit.spring3.dao.PersonDAO">
     <insert id="insertPerson" parameterType="Person">
-        insert into person values (#{name}, #{age})
+        INSERT INTO person VALUES (#{name}, #{age})
     </insert>
+
+    <delete id="deletePerson" parameterType="String">
+        DELETE FROM person
+        WHERE name LIKE '%' || #{name} || '%'
+    </delete>
+    
+    <select id="selectAllPerson" resultType="Person">
+        SELECT * FROM PERSON
+    </select>
 </mapper>
