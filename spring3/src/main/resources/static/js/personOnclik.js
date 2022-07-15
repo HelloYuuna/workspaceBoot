@@ -1,18 +1,23 @@
 
 //수정
-function updateBtn() {
-    alert("소환!");
+function updatePersonBtn(name) {
+    // alert(name);
+    let msg = confirm("정말 수정하시겠습니까?");
+    if(msg) {
+        location.href = 'update?name=' + name;
+    } else {
+        alert("취소되었습니다.");
+    }
 }
 
 //삭제
-function deleteBtn() {
+function deletePersonBtn(name) {
+    // alert(name);
     let msg = confirm("정말 삭제하시겠습니까?");
     if(msg) {
-        //true
-        // alert("확인");
-        location.href="delete";
+        // alert(location.href);
+        location.href = 'delete?name=' + name;
     } else {
-        //false
-        alert("취소");
+        alert("취소되었습니다.");
     }
 }

@@ -33,4 +33,14 @@ public class PersonServiceImpl implements PersonService {
 	public ArrayList<Person> selectAllPerson() {
 		return personDAO.selectAllPerson();
 	}
+
+	@Override
+	public Person selectPerson(String name) {
+		return personDAO.selectPerson(name);
+	}
+
+	@Override
+	public int updatePerson(Person person) {
+		return personDAO.updatePerson(person);
+	}
 }

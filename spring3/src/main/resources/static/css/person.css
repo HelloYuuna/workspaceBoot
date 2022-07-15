@@ -1,5 +1,5 @@
 .container {
-    width: 300px;
+    width: 700px;
     text-align: center;
     margin: auto;
 }
@@ -16,13 +16,14 @@ table,th, td {
 }
 
 th {
-    width: 50px;
+    width: 100px;
     background: #cdb4db;
     color: #5b5b5b;
 }
 
 td {
     color: #757575;
+    border: 1px dotted #d8cbe3;
 }
 
 label {

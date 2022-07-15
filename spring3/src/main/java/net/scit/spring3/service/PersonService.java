@@ -12,4 +12,8 @@ public interface PersonService {
 	public int deletePerson(String name);
 
 	public ArrayList<Person> selectAllPerson();
+
+    public Person selectPerson(String name);
+
+	public int updatePerson(Person person);
 }

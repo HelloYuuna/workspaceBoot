@@ -12,26 +12,19 @@
     <table>
       <tr>
         <th>이름</th>
-        <td th:each="person : ${personList}">
-          <span th:text="${person.getName()}"></span>
-        </td>
-        <td>
-          <button onclick="updateBtn()" value="update">수정</button>
-        </td>
-        <td>
-          <button onclick="deleteBtn()" value="delete">삭제</button>
-        </td>
-      </tr>
-      <tr>
         <th>나이</th>
-        <td th:each="person : ${personList}">
-          <span th:text="${person.getAge()} + '살'"></span>
+        <th>수정</th>
+        <th>삭제</th>
+      </tr>
+      <tr th:each="person : ${personList}">
+        <td th:text="${person.name}"></td>
+        <td th:text="${person.age} + '살'"></td>
+        <td>
+          <input type="button" onclick="updatePersonBtn(this.getAttribute('pname'))" th:pname="${person.name}" value="수정">
         </td>
         <td>
-          <button onclick="updateBtn()" value="update">수정</button>
-        </td>
-        <td>
-          <button onclick="deleteBtn()" value="delete">삭제</button>
+          <input type="button" onclick="deletePersonBtn(this.getAttribute('pname'))" th:pname="${person.name}" value="삭제">
+          <a th:href="|javascript:location.href='delete?name=${person.name}'|">삭제</a>
         </td>
       </tr>
     </table>

@@ -55,6 +55,20 @@ public class PersonController {
         return "redirect:/";
     }
 
+    @GetMapping("/select")
+    public String select(Model model) {
+        ArrayList<Person> personList = service.selectAllPerson();
+
+        if(personList.isEmpty()) {
+            log.debug("데이터가 없습니다.");
+            return "redirect:/";
+        }
+        log.info("조회결과: " + personList);
+        model.addAttribute("personList", personList);
+
+        return "/select";
+    }
+
     /**
      * delete
      * @param name PersonDB column
@@ -67,25 +81,41 @@ public class PersonController {
 
         if(result != 1) {
             log.debug("삭제 실패");
-            return "redirect:/";
+            return "redirect:/select";
         }
 
         log.info("삭제 완료 " + "(" + result + " 건)");      // 커밋자동
-        return "redirect:/";
+        return "redirect:/select";
     }
 
-    @GetMapping("/select")
-    public String select(Model model) {
-        ArrayList<Person> personList = service.selectAllPerson();
-        if(personList.isEmpty()) {
-            log.debug("데이터가 없습니다.");
-            return "redirect:/";
+    @GetMapping("/update")
+    public String update(String name, Model model) {
+        log.info("이름" + name);
+        /*
+         * 전달 받은 이름으로 DB에 검색하여 결과를 Person객체로 받아옴
+         * 객체를 Model에 저장하여 HTML에 이동
+         */
+        Person person = service.selectPerson(name);
+        model.addAttribute("selectPerson", person);
+        log.info("수정전: " + person);
+
+        return "/updateForm";
+    }
+
+    @PostMapping("/update")
+    public String update(Person person) {
+        log.debug("수정후: " + person);
+        /*
+         * person 정보로 수정
+         */
+        person.setAge(person.getAge());
+
+        int result = service.updatePerson(person);
+        if(result != 1) {
+            log.debug("그런 사람 없습니다.");
         }
 
-        log.info("조회결과: " + personList);
-        model.addAttribute("personList", personList);
-
-        return "/select";
+        log.info("수정 완료");
+        return "redirect:/select";
     }
-
 }

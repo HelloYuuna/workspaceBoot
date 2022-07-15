@@ -4,7 +4,6 @@ import net.scit.spring3.vo.Person;
 import org.apache.ibatis.annotations.Mapper;    //Mybatis에서 제공하는 기능
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * DB와 자바를 이어줌 Mapping
@@ -21,4 +20,8 @@ public interface PersonDAO {
     public int deletePerson(String name);
 
     public ArrayList<Person> selectAllPerson();
+
+    public Person selectPerson(String name);
+
+    public int updatePerson(Person person);
 }

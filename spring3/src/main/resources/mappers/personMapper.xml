@@ -19,4 +19,15 @@ hashmap : key 키 값
     <select id="selectAllPerson" resultType="Person">
         SELECT * FROM PERSON
     </select>
+
+    <select id="selectPerson" parameterType="String" resultType="Person">
+        SELECT NAME, AGE FROM PERSON
+        where NAME = #{name}
+    </select>
+    
+    <update id="updatePerson" parameterType="Person">
+        UPDATE PERSON
+        SET AGE = #{age}
+        WHERE NAME = #{name}
+    </update>
 </mapper>

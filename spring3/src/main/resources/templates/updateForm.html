@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+    <div class="container">
+        <h1>[ 수정 ]</h1>
+        <form action="update" method="post" onsubmit="return check();">
+            <table>
+                <tr>
+                    <th>
+                        <label for="name">이름</label>
+                    </th>
+                    <td>
+                        <input type="text" name="name" id="name" th:value="${selectPerson.name}" readonly="readonly">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="age">나이</label>
+                    </th>
+                    <td>
+                        <input type="number" name="age" id="age" th:value="${selectPerson.age}">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="저장">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
