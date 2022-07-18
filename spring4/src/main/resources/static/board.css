@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+.container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #fff;
+    margin: 0 auto;
+    padding: 5px 0;
+    background: linear-gradient(90deg, #ffe6a7, #6667ab);
+    text-align: center;
+
+}
+
+table, th, td {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: left;
+    color: #fff;
+}
+
+th {
+    width: 30%;
+    background: #6667ab;
+}
+
+td {
+    border: 1px dotted #ffe6a7;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    background: #ffe6a7;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 250px;
+}
+
+#submit {
+    text-align: center;
+}
+
+#start_hr {
+    border-top: 1px solid #6667ab;
+}
+
+#end_hr {
+    border-bottom: 1px dashed #6667ab;
+}
+

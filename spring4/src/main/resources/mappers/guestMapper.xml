@@ -1,0 +1,20 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.softsociety.spring4.dao.GuestDAO">
+    <insert id="insertGuest" parameterType="Guest">
+        INSERT INTO GUESTBOOK
+        VALUES (guestbook_seq.nextval, #{name}, #{password}, #{message}, default)
+    </insert>
+    
+    <select id="selectAll" parameterType="Guest" resultType="Guest">
+        SELECT NAME, PASSWORD, MESSAGE, TO_CHAR(INPUTDATA,'YYYY-MM-DD') as inputdata
+        FROM GUESTBOOK
+        order by 4
+    </select>
+    
+    <delete id="deleteGuest" parameterType="String">
+        DELETE FROM GUESTBOOK
+        WHERE PASSWORD = #{password}
+    </delete>
+</mapper>

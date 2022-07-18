@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert</title>
+    <script src="../check.js"></script>
+    <link rel="stylesheet" href="../board.css">
+</head>
+<body>
+    <div class="container">
+      <h1>[ 방명록 글쓰기 ]</h1>
+      <form action="write" method="post" onsubmit="return check();">
+        <table>
+          <tr>
+            <th>
+              <label for="name">이름</label>
+            </th>
+            <td>
+              <input type="text" name="name" id="name">
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <label for="password">비밀번호</label>
+            </th>
+            <td>
+              <input type="password" name="password" id="password">
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <label for="message">내용</label>
+            </th>
+            <td>
+              <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td id="submit" colspan="2">
+              <input type="submit" value="저장">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+</body>
+</html>
