@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="../board.css">
+    <script src="../board.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="boardWrite">
+          <h2>[ 방 명 록 ]</h2>
+          <form>
+            <input name="" id="btn_submit" type="button" value="글쓰기" onclick="gotoWrite()">
+          </form>
+        </div>
+<!-- 삭제시 서버로 전송할 폼 -->
+        <form th:action="@{/delete}" method="post" id="deleteForm">
+            <input type="hidden" name="num" id="num" value="">
+            <input type="hidden" name="password" id="password" value="">
+        </form>
+        <hr id="start_hr">
+        <div class="boardList" th:each="guests : ${guests}">
+            <input type="hidden" name="num" th:value="${guests.num} ">
+            <p th:text="'작성자: '+ ${guests.name}"></p>
+            <p th:text="'작성일: ' + ${guests.inputdata}"></p>
+            <p th:text="${guests.message}"></p>
+            <p>
+              <label>비밀번호</label>
+                <input type="password" th:id="|pw${guests.num}|">
+                <input type="button" value="삭제" th:num="${guests.num}"
+                       th:onclick="gotoDelete(this.getAttribute('num'))">
+            </p>
+        <hr id="end_hr">
+        </div>
+    </div>
+</body>
+</html>

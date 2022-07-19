@@ -20,5 +20,5 @@ public interface GuestDAO {
     ArrayList<Guest> selectAll(Guest guest);
 
     //delete
-    int deleteGuest(String password);
+    int deleteGuest(Guest guest);
 }

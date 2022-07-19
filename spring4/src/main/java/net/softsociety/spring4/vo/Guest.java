@@ -11,6 +11,7 @@ import lombok.Data;
 
 @Data
 public class Guest {
+    private int num;                    //sequence
     private String name;
     private String password;
     private String message;

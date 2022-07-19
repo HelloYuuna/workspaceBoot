@@ -8,13 +8,16 @@
     </insert>
     
     <select id="selectAll" parameterType="Guest" resultType="Guest">
-        SELECT NAME, PASSWORD, MESSAGE, TO_CHAR(INPUTDATA,'YYYY-MM-DD') as inputdata
+        SELECT NUM, NAME, PASSWORD, MESSAGE, TO_CHAR(INPUTDATA,'YYYY-MM-DD') as inputdata
         FROM GUESTBOOK
-        order by 4
+        order by 4 desc
     </select>
     
-    <delete id="deleteGuest" parameterType="String">
+    <delete id="deleteGuest" parameterType="Guest">
         DELETE FROM GUESTBOOK
-        WHERE PASSWORD = #{password}
+        WHERE
+            PASSWORD = #{password}
+            AND
+            NUM = #{num}
     </delete>
 </mapper>

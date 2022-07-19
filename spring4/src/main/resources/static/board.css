@@ -3,13 +3,14 @@
 .container {
     width: 500px;
     margin: 0 auto;
+    padding: 10px 0;
 }
 
 h1 {
-    color: #fff;
+    color: #efefef;
     margin: 0 auto;
     padding: 5px 0;
-    background: linear-gradient(90deg, #ffe6a7, #6667ab);
+    background: linear-gradient(150deg, #6667ab 40%, #231942);
     text-align: center;
 
 }
@@ -19,7 +20,7 @@ table, th, td {
     border-collapse: collapse;
     padding: 10px;
     text-align: left;
-    color: #fff;
+    color: #efefef;
 }
 
 th {
@@ -28,7 +29,7 @@ th {
 }
 
 td {
-    border: 1px dotted #ffe6a7;
+    border: 1px dotted #6667ab;
 }
 
 input[type="text"]:focus,

@@ -31,7 +31,7 @@ public class GuestServiceImpl implements GuestService {
     }
 
     @Override
-    public int deleteGuest(String password) {
-        return dao.deleteGuest(password);
+    public int deleteGuest(Guest guest) {
+        return dao.deleteGuest(guest);
     }
 }

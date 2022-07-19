@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="../board.css">
+    <script src="../board.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="boardWrite">
+          <h2>[ 방 명 록 ]</h2>
+          <form>
+            <input name="" id="btn_submit" type="button" value="글쓰기" onclick="gotoWrite()">
+          </form>
+        </div>
+        <hr id="start_hr">
+        <div class="boardList" th:each="guests : ${guests}">
+<!--            <form action="delete" method="post">-->
+            <form th:action="@{/board/delete}" method="post">
+<!--                num : sequence 히든으로 (소스보기로 보임) -->
+                <input type="hidden" name="num" th:value="${guests.num} ">
+                <p th:text="'작성자: '+ ${guests.name}"></p>
+                <p th:text="'작성일: ' + ${guests.inputdata}"></p>
+<!--                pre: textarea 의 엔터키 사용 p태그는 전부 한줄로 표현됨 -->
+                <pre th:text="${guests.message}"></pre>
+                <p>
+                  <label for="password">비밀번호
+                      <input type="password" name="password" id="password">
+                  </label>
+                    <input type="submit" value="삭제">
+                </p>
+            </form>
+            <hr id="end_hr">
+        </div>
+    </div>
+</body>
+</html>

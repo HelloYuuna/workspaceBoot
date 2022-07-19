@@ -18,5 +18,5 @@ public interface GuestService {
     ArrayList<Guest> selectAll(Guest guest);
 
     //한명삭제
-    int deleteGuest(String password);
+    int deleteGuest(Guest guest);
 }
