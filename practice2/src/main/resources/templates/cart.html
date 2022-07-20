@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <script th:src="@{/cart.js}"></script>
+    <link rel="stylesheet" th:href="@{/shopping.css}">
+</head>
+<body>
+    <div class="table">
+        <h2 id="title">Cart List</h2>
+        <form action="" method="post" id="deleteForm">
+            <input type="hidden" name="pNum">
+        </form>
+            <table>
+                <tr>
+                    <th>Number</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Product</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                    <th>delete?</th>
+                </tr>
+                <tr>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td>
+                        <input type="button" value="Delete" onclick="deleteCart()">
+                    </td>
+                </tr>
+            </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Detail</title>
+    <link rel="stylesheet" th:href="@{/shopping.css}">
+    <script th:src="@{/shopping.js}"></script>
+</head>
+<body>
+    <div class="table">
+        <h2 id="title">Product Detail</h2>
+<!--/*
+    hidden space 제품번호를 보내는 폼
+*/-->
+        <form th:action="@{/cart}" method="post" id="gotoCartForm" th:object="${selectItem}" onsubmit="return gotoCart();">
+            <input type="hidden" th:field="*{pNum}">
+            <input type="hidden" th:field="*{pName}">
+            <input type="hidden" th:field="*{pAmount}">
+            <input type="hidden" th:field="*{pPrice}">
+            <table>
+                <tr>
+                    <th>Number</th>
+                    <td>
+                        <span th:text="*{pNum}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Product</th>
+                    <td><span th:text="*{pName}"></span></td>
+                </tr>
+                <tr>
+                    <th>Amount</th>
+                    <td><span th:text="*{pAmount}"></span></td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td><span th:text="*{pPrice}"></span></td>
+                </tr>
+                <tr>
+                    <th>Remark</th>
+                    <td>
+                        <input type="submit" value="담기">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

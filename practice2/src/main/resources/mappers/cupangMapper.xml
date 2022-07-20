@@ -1,0 +1,20 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.softsociety.practice2.dao.ShoppingMapper">
+    <select id="selectItems" resultType="ItemList">
+        SELECT P_NUM as pNum, P_NAME as pName, AMOUNT as pAmount, PRICE as pPrice
+        FROM ITEMLIST
+    </select>
+
+    <select id="selectItem" parameterType="String" resultType="ItemList">
+        SELECT P_NUM as pNum, P_NAME as pName, AMOUNT as pAmount, PRICE as pPrice
+        FROM ITEMLIST
+        WHERE P_NUM = #{pnum}
+    </select>
+
+    <insert id="insertCart" parameterType="OrderList">
+        INSERT INTO ORDERLIST
+        VALUES (ORDERS_SEQ.nextval,'cha_mame','차슈와 콩이','도쿄도 스기나미구', #{pName}, #{pAmount}, #{pPrice}, #{pNum})
+    </insert>
+</mapper>

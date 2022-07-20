@@ -1,0 +1,3 @@
+function deleteCart() {
+    console.log();
+}
