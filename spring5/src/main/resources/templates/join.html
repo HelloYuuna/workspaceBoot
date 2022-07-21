@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h2 class="title">sign up</h2>
+        <h2 class="title">Sign Up</h2>
         <form th:object="${member}" th:action="@{/member/join}" method="post" onsubmit="return check();">
             <table>
                 <tr>
@@ -25,6 +25,14 @@
                     </th>
                     <td>
                         <input minlength="3" maxlength="10" placeholder="비밀번호" type="password" th:field="*{memberpw}">
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="pwChk">비밀번호 재확인</label>
+                    </th>
+                    <td>
                         <input minlength="3" maxlength="10" placeholder="한번더 입력" type="password" id="pwChk">
                     </td>
                 </tr>
@@ -61,7 +69,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td class="btn_submit" colspan="2">
                         <input type="submit" value="전송">
                     </td>
                 </tr>

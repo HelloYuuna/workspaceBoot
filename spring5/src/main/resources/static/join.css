@@ -18,12 +18,14 @@ table, th, td {
 
 th {
     width: 40%;
-    background: #f08080;;
+    background: #f08080;
+    text-align: left;
+    padding-left: 30px;
 }
 
 td {
     border: 1px dashed #f08080;
-    text-align: center;
+    padding-left: 20px;
 }
 
 input[type=text]:focus,
@@ -37,6 +39,12 @@ input[type=text],
 input[type=password],
 input[type=tel],
 input[type=email] {
-    width: 100px;
+    width: 200px;
     height: 30px;
+    padding-left: 10px;
+}
+
+.btn_submit {
+    text-align: center;
+    height: 50px;
 }

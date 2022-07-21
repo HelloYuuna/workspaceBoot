@@ -6,7 +6,7 @@ function check() {
     if (id.value.length === 0) {
         alert("아이디를 입력해주세요");
         id.focus();
-        id.select();
+        // id.select();
         return false;
     }
 
