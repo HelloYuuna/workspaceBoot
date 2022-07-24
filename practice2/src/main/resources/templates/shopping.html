@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Shopping</title>
-    <link rel="stylesheet" th:href="@{/shopping.css}">
-    <script th:src="@{/shopping.js}"></script>
+  <meta charset="UTF-8">
+  <title>Shopping</title>
+  <link rel="stylesheet" th:href="@{/shopping.css}">
+  <script th:src="@{/shopping.js}"></script>
 </head>
 <body>
-    <div class="table">
-        <h2 id="title">Chasyu's Shopping Center</h2>
-        <form>
-            <table>
-                <tr>
-                    <th>Number</th>
-                    <th>Product</th>
-                    <th>Amount</th>
-                    <th>Price</th>
-                    <th>Order</th>
-                </tr>
-                <tr th:each="items : ${items}">
-                    <td th:text="${items.pNum}">제품번호</td>
-                    <td th:text="${items.pName}">이름</td>
-                    <td th:text="${items.pAmount}">남은수량</td>
-                    <td th:text="${items.pPrice}">가격</td>
-                    <td>
-                        <label for="item_detail">
-                            <input th:pnum="${items.pNum}" onclick="gotoDetail(this.getAttribute('pnum'))" name="item_detail" id="item_detail" type="button" value="Dedail">
-                        </label>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
+<div class="table">
+  <h2 id="title">Chasyu's Shopping Center</h2>
+  <form>
+    <table>
+      <tr>
+        <th>Number</th>
+        <th>Product</th>
+        <th>Amount</th>
+        <th>Price</th>
+        <th>Order</th>
+      </tr>
+      <tr th:each="items : ${items}">
+        <td th:text="${items.pNum}">제품번호</td>
+        <td th:text="${items.pName}">이름</td>
+        <td th:text="${items.pAmount}">남은수량</td>
+        <td th:text="${items.pPrice}">가격</td>
+        <td>
+          <label for="item_detail">
+            <input th:pnum="${items.pNum}" onclick="gotoDetail(this.getAttribute('pnum'))" name="item_detail" id="item_detail" type="button" value="Dedail">
+          </label>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
 </body>
 </html>
