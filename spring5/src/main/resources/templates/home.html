@@ -17,7 +17,7 @@
                 <li><a href="">Board</a></li>
             </ul>
         </div>
-        <!--     로그이 햇을 때 : 로그아웃, 개인정보 수정, 게시판     -->
+        <!--     로그이 햇을 때 : 로그아웃, 개인정보 수정, 게시판      -->
         <div sec:authorize="isAuthenticated()">
             <ul>
                 <li><a th:href="@{/logout}">Logout</a></li>
