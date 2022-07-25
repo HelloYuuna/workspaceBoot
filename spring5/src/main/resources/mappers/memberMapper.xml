@@ -6,4 +6,10 @@
         INSERT INTO spring5_member
         VALUES (#{memberid}, #{memberpw}, #{membername}, #{email}, #{phone}, #{address}, DEFAULT, DEFAULT)
     </insert>
+
+<!-- 회원정보 조회 -->
+    <select id="selectOne" parameterType="String" resultType="Member">
+        SELECT * FROM SPRING5_MEMBER
+        WHERE MEMBERID = #{memberid}
+    </select>
 </mapper>

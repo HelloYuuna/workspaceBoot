@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>loginForm</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <script>
+<!--        이거 안먹어 -->
+        function gotoHome() {
+            location.href="../home";
+        }
+    </script>
+</head>
+<body>
+    <div class="content">
+        <h2 id="title">Login</h2>
+        <form th:action="@{/member/login}" method="post">
+            <table>
+                <tr>
+                    <th>
+                        <label for="memberid">ID</label>
+                    </th>
+                    <td>
+                        <input type="text" name="memberid" placeholder="아이디 입력">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="memberpw">Password</label>
+                    </th>
+                    <td>
+                        <input type="password" name="memberpw" placeholder="비밀번호 입력">
+                    </td>
+                </tr>
+                <tr class="btn_submit">
+                    <td colspan="2">
+                        <input type="submit" value="Login">
+                        <input type="button" value="Back" onclick="gotoHome()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

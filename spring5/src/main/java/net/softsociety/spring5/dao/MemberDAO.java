@@ -13,4 +13,9 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MemberDAO {
 
     int insertUser(Member member);
+
+//    boolean idChk(String serchId);
+    Member selectOne(String serchId);
+
+
 }

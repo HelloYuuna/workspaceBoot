@@ -38,6 +38,8 @@ public class CartController {
     @PostMapping("/cart")
     public String gotoCart(OrderList orderList) {
         log.debug("가져온 객체값 orderList" + orderList);
+
+        // DB에 담기
         int res = cartService.insertCart(orderList);
 
         if (res != 1) {
@@ -45,6 +47,8 @@ public class CartController {
             return "redirect:/";
         }
         //selectAll orderlist
+        orderList = cartService.selectOrders();
+        log.debug("가져온 장바구니 목록: ",orderList);
 
         return "/cart";
     }

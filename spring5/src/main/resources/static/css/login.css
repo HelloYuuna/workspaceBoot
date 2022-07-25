@@ -1,9 +1,12 @@
-.container {
-    width: 500px;
-    margin: auto;
+@charset "UTF-8";
+
+div.content {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 300px;
+    margin: 30px auto;
 }
 
-.title {
+h2#title {
     text-align: center;
     color: #f08080;
 }
@@ -17,31 +20,22 @@ table, th, td {
 }
 
 th {
-    width: 40%;
+    width: 35%;
     background: #f08080;
     text-align: left;
-    padding-left: 30px;
+    padding-left: 10px;
+    border: 1px dashed #fff;
 }
 
 td {
     border: 1px dashed #f08080;
-    padding-left: 20px;
+    padding-left: 15px;
+
 }
 
 input[type=text]:focus,
-input[type=password]:focus,
-input[type=tel]:focus,
-input[type=email]:focus {
+input[type=password]:focus {
     background: #ffdab9;
-}
-
-input[type=text],
-input[type=password],
-input[type=tel],
-input[type=email] {
-    width: 200px;
-    height: 30px;
-    padding-left: 10px;
 }
 
 .btn_submit {

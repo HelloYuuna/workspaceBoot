@@ -11,4 +11,6 @@ import net.softsociety.practice2.vo.OrderList;
 public interface CartService {
 
     int insertCart(OrderList orderList);
+
+    OrderList selectOrders();
 }

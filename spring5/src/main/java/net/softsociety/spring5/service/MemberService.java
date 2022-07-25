@@ -12,4 +12,6 @@ import net.softsociety.spring5.domain.Member;
 public interface MemberService {
 
     int insertUser(Member member);
+
+    boolean idChk(String serchId);
 }

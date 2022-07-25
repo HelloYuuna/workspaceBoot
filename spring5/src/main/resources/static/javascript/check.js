@@ -1,14 +1,41 @@
+// gotoJoin
+function gotoJoin(id) {
+    // alert(id);
+
+    if (!isNaN(id)) {
+        let searchid = document.getElementById('serchId');
+        alert("아이디는 숫자가아닌 문자로 입력해주세요");
+        searchid.focus();
+        searchid.value = '';
+
+        return;
+    }
+
+    opener.document.getElementById('memberid').value = id;
+    this.close();
+}
+
+//idChkForm-open
+function idFormOpen() {
+    //GET방식
+    let size = 'left=50,top=50,width=100,heigth=100';
+    let win =window.open('idChk','win',size);
+    /*win.window.resizeTo(500, 200);
+    win.window.moveTo(50,50);*/
+}
+
+
 function check() {
-    let id = document.getElementById('memberid');
+    // 아이디 체크
+    // let id = document.getElementById('memberid');
     // console.log(id.value);
 
-    // 아이디 체크
-    if (id.value.length === 0) {
-        alert("아이디를 입력해주세요");
-        id.focus();
-        // id.select();
-        return false;
-    }
+    // if (id.value.length === 0) {
+    //     alert("아이디를 입력해주세요");
+    //     id.focus();
+    //     // id.select();
+    //     return false;
+    // }
 
     let memberpw = document.getElementById('memberpw');
     let pwChk = document.getElementById('pwChk');

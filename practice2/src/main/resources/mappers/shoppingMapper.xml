@@ -12,9 +12,4 @@
         FROM ITEMLIST
         WHERE P_NUM = #{pnum}
     </select>
-
-    <insert id="insertCart" parameterType="OrderList">
-        INSERT INTO ORDERLIST
-        VALUES (ORDERS_SEQ.nextval,'cha_mame','차슈와 콩이','도쿄도 스기나미구', #{pName}, #{pAmount}, #{pPrice}, #{pNum})
-    </insert>
 </mapper>
