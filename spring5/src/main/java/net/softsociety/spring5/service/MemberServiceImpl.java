@@ -40,14 +40,8 @@ public class MemberServiceImpl implements MemberService {
          * Member 객체의 encodedPW 를 가져와서
          * 기존의 memberpw 에 암호화하여 넣음
          */
-        System.out.println("객체 넘어오나 확인: " + member);
-        System.out.println("비밀번호 암호화 전: " + member.getMemberpw());
-
-        // TODO 여기서부터 안넘어감
         String encodedPW = passwordEncoder.encode(member.getMemberpw());
         member.setMemberpw(encodedPW);
-
-        System.out.println("비밀번호 암호화 후: " + encodedPW);
 
         return dao.insertUser(member);
     }
@@ -64,5 +58,31 @@ public class MemberServiceImpl implements MemberService {
         Member member = dao.selectOne(serchId);
 //        return member == null? true : false;
         return member == null;
+    }
+
+    @Override
+    public Member getMemberinfo(String id) {
+        return dao.selectOne(id);
+    }
+
+    /**
+     * 개인정보 수정
+     * 새로 입력받은 비밀번호는 암호화 필수
+     * @param member 아이디값을 가지고 있는 객체
+     * @return 처리된 결과값 int
+     */
+    @Override
+    public int updateMember(Member member) {
+        String updatePW = member.getMemberpw();
+        System.out.println("수정하려는 비번: " + updatePW);
+
+        // 수정하려는 비번이 값이 있을때 암호화 진행
+        if (updatePW != null && updatePW.length() != 0) {
+            // 비밀번호 암호화
+            String encodedPW = passwordEncoder.encode(member.getMemberpw());
+            member.setMemberpw(encodedPW);
+        }
+
+        return dao.updateMember(member);
     }
 }

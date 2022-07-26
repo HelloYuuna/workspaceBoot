@@ -15,6 +15,7 @@ import java.util.Collection;
 
 @Data
 public class Member implements UserDetails {
+    private static final long serialVersionUID = 3846784129371940719L;
     private String memberid;
     private String memberpw;
     private String membername;

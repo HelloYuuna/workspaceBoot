@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>IdChk</title>
+    <link rel="stylesheet" th:href="@{/css/idChk.css}">
     <script th:src="@{/javascript/check.js}"></script>
 </head>
 <body>
-    <div class="idChk">
-        <h2>[ ID 중복 확인 ]</h2>
+    <div  class="content">
+        <h2 id="title">[ ID 중복 확인 ]</h2>
         <form th:action="@{/member/idChk}" method="post">
             <table>
-                <tr class="content">
+                <tr>
                     <td>
                         <label for="serchId">serch ID :</label>
                     </td>
@@ -23,6 +24,7 @@
                 </tr>
             </table>
         </form>
+        <hr>
 <!--        null이라면 안쪽 div가 안보임-->
         <div th:if="${searchId != null}">
 <!--        result:true      -->

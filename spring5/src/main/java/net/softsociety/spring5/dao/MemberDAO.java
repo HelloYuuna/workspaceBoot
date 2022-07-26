@@ -17,5 +17,5 @@ public interface MemberDAO {
 //    boolean idChk(String serchId);
     Member selectOne(String serchId);
 
-
+    int updateMember(Member member);
 }

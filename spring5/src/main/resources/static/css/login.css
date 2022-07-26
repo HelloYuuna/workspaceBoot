@@ -42,3 +42,16 @@ input[type=password]:focus {
     text-align: center;
     height: 50px;
 }
+
+div.white {
+    width: 400px;
+    text-align: center;
+}
+
+span#error-panel {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #f08080;
+}

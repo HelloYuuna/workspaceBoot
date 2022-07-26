@@ -39,6 +39,11 @@
                     </td>
                 </tr>
             </table>
+            <div class="white">
+                <!--            아이디 비번 틀렸을때 에러            -->
+                <span id="error-panel" th:if="${param.error}">ID 또는 비밀번호가 틀렸습니다.</span>
+            </div>
+            <div class="white"></div>
         </form>
     </div>
 </body>

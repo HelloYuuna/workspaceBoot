@@ -14,4 +14,11 @@ public interface MemberService {
     int insertUser(Member member);
 
     boolean idChk(String serchId);
+
+    // 아이디로 멤버 정보 가져오기
+    Member getMemberinfo(String id);
+
+    // 개인정보 수정
+    int updateMember(Member member);
+
 }

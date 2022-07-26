@@ -12,4 +12,17 @@
         SELECT * FROM SPRING5_MEMBER
         WHERE MEMBERID = #{memberid}
     </select>
+
+<!--  개인정보 수정: 비밀번호가 널이거나 길이가 0 이 아니라면 수정  -->
+    <update id="updateMember" parameterType="Member">
+        UPDATE SPRING5_MEMBER
+        SET MEMBERNAME = #{membername}
+            , EMAIL = #{email}
+            , PHONE = #{phone}
+            , ADDRESS = #{address}
+        <if test="memberpw != null and memberpw != ''">
+            , MEMBERPW = #{memberpw}
+        </if>
+        WHERE MEMBERID = #{memberid}
+    </update>
 </mapper>
