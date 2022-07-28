@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>Board List Main</title>
+	<script th:src="@{/javascript/board/board.js}"></script>
+	<link rel="stylesheet" th:href="@{/css/board/list.css}">
+</head>
+<body>
+	<div class="container">
+		<div class="list">
+			<h2 id="title">Board List</h2>
+	<!--		글쓰기 : 로그인해야 보여지는곳  -->
+			<span class="link" sec:authorize="isAuthenticated()">
+				<a th:href="@{/board/boardPosting}">POST</a>
+			</span>
+	<!--		메인 화면으로 이동  -->
+			<span class="link">
+				<a th:href="@{/}">HOME</a>
+			</span>
+			<div class="boardList">
+				<div class="" th:each="list : ${boardList}">
+					
+				</div>
+
+
+
+				<table th:object="${boardList}">
+					<tr th:each="list : ${boardList}">
+						<td>
+							<span th:text="${list.boardnum}"></span>
+						</td>
+						<td>
+							<a th:href="@{/board/read(boardnum=${list.boardnum})}" th:text="${list.title}"></a>
+						</td>
+						<td>
+							<span th:text="${list.memberid}"></span>
+						</td>
+						<td>
+							<span th:text="${list.hits}"></span>
+						</td>
+						<td>
+							<span th:text="${list.inputdate}"></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+div.container {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 500px;
+    margin: 30px auto;
+}
+
+h2#title {
+    background: #354f52;
+    color: #fff;
+    padding: 20px;
+    border-bottom: 1px dashed #cad2c5;
+    margin: 0 0 10px 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link
+, a:visited {
+    color: #52796f;
+}
+
+a:hover {
+    color: #2f3e46;
+    font-weight: 600;
+}
+
+a:active {
+    color: #0077b6;
+}

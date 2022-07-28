@@ -14,15 +14,15 @@
             <ul>
                 <li><a th:href="@{/member/join}">Sign up</a></li>
                 <li><a th:href="@{/member/loginForm}">Login</a></li>
-                <li><a href="">Board</a></li>
+                <li><a th:href="@{/board/list}">Board</a></li>
             </ul>
         </div>
-        <!--     로그이 햇을 때 : 로그아웃, 개인정보 수정, 게시판      -->
+        <!--     로그인 햇을 때 : 로그아웃, 개인정보 수정, 게시판      -->
         <div sec:authorize="isAuthenticated()">
             <ul>
                 <li><a th:href="@{/logout}">Logout</a></li>
                 <li><a th:href="@{/member/mypage}">Edit Profile</a></li>
-                <li><a href="">Board</a></li>
+                <li><a th:href="@{/board/list}">Board</a></li>
             </ul>
         </div>
         <hr>

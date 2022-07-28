@@ -1,0 +1,28 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.softsociety.spring5.dao.BoardDAO">
+    <insert id="insertBoard" parameterType="Board">
+        INSERT INTO SPRING5_BOARD
+        VALUES (SPRING5_BOARD_SEQ.nextval, #{memberid}, #{title}, #{textarea}, default, default, null, null)
+    </insert>
+
+    <select id="selectBoardList" resultType="Board">
+        SELECT boardnum, memberid, title, TO_CHAR(inputdate, 'YYYY-MM-DD') as inputdate, hits
+        FROM SPRING5_BOARD
+        ORDER BY 1 desc
+    </select>
+
+    <select id="selectBoard" parameterType="int" resultType="Board">
+        SELECT memberid , TO_CHAR(inputdate, 'YYYY-MM-DD') as inputdate
+             , hits , title, textarea
+        FROM SPRING5_BOARD
+        WHERE BOARDNUM = #{boardnum}
+    </select>
+
+    <update id="updateBoardCNT" parameterType="int">
+        UPDATE SPRING5_BOARD
+        SET HITS = HITS + 1
+        WHERE BOARDNUM = #{boardnum}
+    </update>
+</mapper>

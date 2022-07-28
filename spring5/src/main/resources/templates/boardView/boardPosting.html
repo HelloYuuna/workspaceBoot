@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Posting Page</title>
+	<script th:src="@{/javascript/board/board.js}"></script>
+	<link rel="stylesheet" th:href="@{/css/board/posting.css}">
+</head>
+<body>
+	<div class="container">
+		<h2>Posing Board</h2>
+		<div class="form">
+			<form th:object="${board}" th:action="@{/board/list}" method="post" onsubmit="return postingChk();">
+				<table>
+					<tr>
+						<td class="text-area">
+							<label>
+								<input type="text" th:field="*{title}" placeholder="제목">
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="text-area">
+							<label>
+								<textarea th:field="*{textarea}" cols="30" rows="10" placeholder="본문 내용(4000byte)"></textarea>
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td class="upload-file">
+							<input type="file" name="" id="">
+						</td>
+					</tr>
+				</table>
+				<div class="btn_submit">
+					<input type="submit" value="SAVE">
+					<input type="reset" value="RESET">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

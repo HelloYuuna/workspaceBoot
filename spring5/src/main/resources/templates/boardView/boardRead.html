@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Read a Posting</title>
+</head>
+<body>
+	<div class="container">
+		<div class="form">
+			<h2>Read</h2>
+		<form th:object="${board}" action="" onsubmit="">
+			<table>
+				<tr>
+					<td>
+						<span th:text="*{memberid}" th:field="*{memberid}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span th:text="*{inputdate}" th:field="*{inputdate}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span th:text="*{hits}" th:field="*{hits}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span th:text="*{title}" th:field="*{title}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<pre><span th:text="*{textarea}" th:field="*{textarea}"></span></pre>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span th:if="*{originalfile ne null}" th:text="*{originalfile}" th:field="*{originalfile}"></span>
+						<span th:if="*{originalfile eq null}">첨부파일 없음</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+		</div>
+	</div>
+</body>
+</html>
