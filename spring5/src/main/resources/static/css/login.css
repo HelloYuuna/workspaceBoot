@@ -38,9 +38,9 @@ input[type=password]:focus {
     background: #ffdab9;
 }
 
-.btn_submit {
+div.btn_submit {
     text-align: center;
-    height: 50px;
+    padding-top: 20px;
 }
 
 div.white {

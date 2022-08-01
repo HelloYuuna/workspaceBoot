@@ -15,38 +15,52 @@
 			<span class="link" sec:authorize="isAuthenticated()">
 				<a th:href="@{/board/boardPosting}">POST</a>
 			</span>
+			<span class="link" sec:authorize="isAuthenticated()">|</span>
 	<!--		메인 화면으로 이동  -->
 			<span class="link">
 				<a th:href="@{/}">HOME</a>
 			</span>
-			<div class="boardList">
-				<div class="" th:each="list : ${boardList}">
-					
-				</div>
-
-
-
-				<table th:object="${boardList}">
+<!--			<div class="bContent" th:each="list : ${boardList}">-->
+<!--				<a th:href="@{/board/read(boardnum=${list.boardnum})}">-->
+<!--					<span class="bTitle" th:text="${list.title}"></span>-->
+<!--				</a>-->
+<!--				<span class="bName" th:text="|${list.memberid}| 님"></span>-->
+<!--				<span class="bName" th:text="|${list.hits}| 건"></span>-->
+<!--			</div>-->
+				<table>
 					<tr th:each="list : ${boardList}">
-						<td>
-							<span th:text="${list.boardnum}"></span>
+						<td class="num-cell">
+							<span th:text="|${list.boardnum}번|"></span>
 						</td>
-						<td>
+						<td class="title-cell">
 							<a th:href="@{/board/read(boardnum=${list.boardnum})}" th:text="${list.title}"></a>
 						</td>
-						<td>
+						<td class="memberid-cell">
 							<span th:text="${list.memberid}"></span>
 						</td>
-						<td>
-							<span th:text="${list.hits}"></span>
+						<td class="hits-cell">
+							<span th:text="|${list.hits} 회|"></span>
 						</td>
-						<td>
+						<td class="date-cell">
 							<span th:text="${list.inputdate}"></span>
 						</td>
 					</tr>
 				</table>
 			</div>
+		<hr>
+		<div class="form-paging-search">
+			<form id="pagingForm" th:action="@{/board/list}" method="get">
+				<input type="hidden" name="page" id="page">
+				<select name="type" id="type">
+					<option th:selected="${type} eq 'title'" value="title">title</option>
+					<option th:selected="${type} eq 'content'" value="content">content</option>
+					<option th:selected="${type} eq 'memberid'" value="memberid">memberid</option>
+					<option th:selected="${type} eq 'all'" value="all">all</option>
+				</select>
+				<input type="text" name="searchword" th:value="${searchword}">
+				<input type="button" value="Search" onclick="pagingFormSubmit(1)">
+			</form>
 		</div>
-	</div>
+		</div>
 </body>
 </html>

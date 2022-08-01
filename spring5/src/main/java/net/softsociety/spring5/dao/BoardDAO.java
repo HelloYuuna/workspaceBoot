@@ -4,6 +4,7 @@ import net.softsociety.spring5.domain.Board;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * projectName     :spring5
@@ -18,7 +19,7 @@ public interface BoardDAO {
     int insertBoard(Board board);
 
     // 게시판 전체 목록
-    List<Board> selectBoardList();
+    List<Board> selectBoardList(Map<String, Object> map);
 
     // 게시판 읽기
     Board selectBoard(int boardnum);

@@ -19,7 +19,8 @@ h2 {
 
 table, td, th {
     /*width: 800px;*/
-    padding: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
     border-collapse: collapse;
 }
 
@@ -30,8 +31,31 @@ table {
 
 }
 
-div.btn_submit {
+input[type=text] {
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 415px
+}
 
+textarea {
+    border-radius: 15px;
+    border: none;
+    padding: 10px;
+    resize: none;
+}
+
+td.upload-file {
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+div.btn_submit {
+    padding-top: 30px;
+    text-align: center;
 }
 
 /* input:text textarea */

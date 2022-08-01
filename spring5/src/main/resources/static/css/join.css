@@ -41,7 +41,7 @@ input[type=email]:focus {
     width: 150px;
     height: 30px;
     padding-left: 10px;
-    margin-right: 20px;
+    margin-right: 10px;
     border: 1px solid #ffb4a2;
 }
 
@@ -68,11 +68,13 @@ input[type=email] {
     border: 1px solid #ffb4a2;
 }
 
-.btn_submit {
+/* 서브밋 버튼 div */
+div.btn_submit {
     text-align: center;
-    height: 50px;
+    padding-top: 20px;
 }
 
+/* 버튼 디자인 */
 input[type=submit],
 input[type=button],
 input[type=reset] {

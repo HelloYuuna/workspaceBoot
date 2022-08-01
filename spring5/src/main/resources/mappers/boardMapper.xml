@@ -6,15 +6,42 @@
         INSERT INTO SPRING5_BOARD
         VALUES (SPRING5_BOARD_SEQ.nextval, #{memberid}, #{title}, #{textarea}, default, default, null, null)
     </insert>
-
-    <select id="selectBoardList" resultType="Board">
-        SELECT boardnum, memberid, title, TO_CHAR(inputdate, 'YYYY-MM-DD') as inputdate, hits
+<!--
+    **
+    * map 에 담아 보내기
+    * <where> 태그는 안에 조건절을 하나라도 만족해야 실행이 됨
+    **
+-->
+    <select id="selectBoardList" parameterType="map" resultType="Board">
+        SELECT boardnum, memberid, title
+             , TO_CHAR(inputdate, '""YY"년 "MM"월 "DD"일 "DY""') as inputdate
+             , hits
         FROM SPRING5_BOARD
+        <if test="searchword != null and type != null">
+            <where>
+                <if test="type == 'title'">
+                    upper(title) like '%' || upper(#{searchword}) || '%'
+                </if>
+                <if test="type == 'content'">
+                    upper(textarea) like '%' || upper(#{searchword}) || '%'
+                </if>
+                <if test="type == 'memberid'">
+                    upper(memberid) like '%' || upper(#{searchword}) || '%'
+                </if>
+                <if test="type == 'all'">
+                    upper(title) like '%' || upper(#{searchword}) || '%'
+                    OR
+                    upper(textarea) like '%' || upper(#{searchword}) || '%'
+                    OR
+                    upper(memberid) like '%' || upper(#{searchword}) || '%'
+                </if>
+            </where>
+        </if>
         ORDER BY 1 desc
     </select>
 
     <select id="selectBoard" parameterType="int" resultType="Board">
-        SELECT memberid , TO_CHAR(inputdate, 'YYYY-MM-DD') as inputdate
+        SELECT memberid , TO_CHAR(inputdate, '""YY"년 "MM"월 "DD"일 "DY""') as inputdate
              , hits , title, textarea
         FROM SPRING5_BOARD
         WHERE BOARDNUM = #{boardnum}

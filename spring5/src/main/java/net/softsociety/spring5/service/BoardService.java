@@ -14,7 +14,8 @@ public interface BoardService {
     // 작성한 게시글 등록
     int insertBoard(Board board);
 
-    List<Board> selectBoardList();
+    List<Board> selectBoardList(String type, String searchword);
 
     Board selectBoard(int boardnum);
+
 }

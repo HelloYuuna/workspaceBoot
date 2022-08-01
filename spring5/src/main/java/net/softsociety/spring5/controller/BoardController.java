@@ -1,5 +1,6 @@
 package net.softsociety.spring5.controller;
 
+import jdk.nashorn.internal.runtime.regexp.joni.constants.internal.StringType;
 import lombok.extern.slf4j.Slf4j;
 import net.softsociety.spring5.domain.Board;
 import net.softsociety.spring5.service.BoardService;
@@ -30,18 +31,25 @@ public class BoardController {
     @Autowired
     private BoardService service;
 
-
     /**
      * 게시판 목록
      * @return list
      */
     @GetMapping("/list")
-    public String boardList(Model model) {
+    public String boardList(Model model
+                            , @RequestParam(value = "page", defaultValue = "1") int page
+                            , String type
+                            , String searchword) {
+        // read param value
+        log.debug("페이지: {}, 검색대상: {}, 검색어: {}", page, type, searchword);
+
         //DB 글 읽어오기
-        List<Board> boardList = service.selectBoardList();
+        List<Board> boardList = service.selectBoardList(type, searchword);
         log.debug("게시글 리스트: {}", boardList);
 
         model.addAttribute("boardList", boardList);
+        model.addAttribute("type", type);
+        model.addAttribute("searchword", searchword);
 
         return "/boardView/boardList";
     }

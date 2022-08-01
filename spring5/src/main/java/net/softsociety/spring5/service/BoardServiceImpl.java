@@ -5,7 +5,9 @@ import net.softsociety.spring5.domain.Board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * projectName     :spring5
@@ -31,8 +33,12 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<Board> selectBoardList() {
-        return dao.selectBoardList();
+    public List<Board> selectBoardList(String type, String searchword) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("type", type);
+        map.put("searchword", searchword);
+
+        return dao.selectBoardList(map);
     }
 
     @Override

@@ -11,3 +11,11 @@ function postingChk() {
 
     return true;
 }
+
+function pagingFormSubmit(pageNum) {
+    // alert(pageNum);
+    let form = document.getElementById('pagingForm');
+    let page = document.getElementById('page');
+    page.value = pageNum;
+    form.submit();
+}

@@ -8,21 +8,21 @@
 </head>
 <body>
 	<div class="container">
-		<h2>Posing Board</h2>
+		<h2>POSTING</h2>
 		<div class="form">
 			<form th:object="${board}" th:action="@{/board/list}" method="post" onsubmit="return postingChk();">
 				<table>
 					<tr>
 						<td class="text-area">
 							<label>
-								<input type="text" th:field="*{title}" placeholder="제목">
+								<input type="text" th:field="*{title}" placeholder="제목" autofocus >
 							</label>
 						</td>
 					</tr>
 					<tr>
 						<td class="text-area">
 							<label>
-								<textarea th:field="*{textarea}" cols="30" rows="10" placeholder="본문 내용(4000byte)"></textarea>
+								<textarea th:field="*{textarea}" cols="50" rows="20" placeholder="본문 내용(4000byte)"></textarea>
 							</label>
 						</td>
 					</tr>
@@ -35,6 +35,7 @@
 				<div class="btn_submit">
 					<input type="submit" value="SAVE">
 					<input type="reset" value="RESET">
+					<input type="button" value="BACK" onclick="location.href='list'">
 				</div>
 			</form>
 		</div>
