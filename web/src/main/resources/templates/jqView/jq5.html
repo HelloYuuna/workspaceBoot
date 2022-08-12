@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Jq5</title>
+	<style>
+		body {
+			color: #6d6875;
+		}
+
+		.container {
+			width: 500px;
+			margin: 0 auto;
+		}
+
+		h2 {
+			text-align: center;
+		}
+
+		h3 {
+			margin-bottom: 0;
+		}
+
+		input[type=button] {
+			padding: 10px;
+			border-radius: 7px;
+			border: none;
+			color: #ffffff;
+			background: #606c38;
+			margin-right: 10px;
+		}
+
+        input[type=button]:hover {
+			background: #2a9d8f;
+		}
+
+        input[type=button]:active {
+			background: #adc178;
+		}
+
+		img {
+			width: 500px;
+		}
+
+		#img2 {
+			width: 100px;
+		}
+	</style>
+    <script th:src="@{/jq/jquery-3.6.0.js}"></script>
+    <script>
+		$(document).ready(function() {
+			$('#img1').click(test1);
+			$('#img2').click(test2);
+		});
+
+        function test1() {
+			let w = $(this).width();			// 객체의 너비
+			let h = $(this).height();			// 객체의 높이
+			$('#img1').css('width', w+10).css('height', h+10);
+		}
+
+        function test2() {
+            let cat1 = '../img/1.png';
+            let cat2 = '../img/2.png';
+            let cat3 = '../img/3.png';
+            let cat4 = '../img/4.png';
+            let cat5 = '../img/5.png';
+			let catArr = [cat1,cat2,cat3,cat4,cat5];
+
+            $(catArr).each(function(i, cat){
+                $('#img2').attr('src',cat);
+                // console.log(cat);
+			});
+		}
+    </script>
+</head>
+<body>
+	<div class="container">
+		<h2 class="">연습문제</h2>
+		<div class="img">
+			<h3>이미지 크기 변경 (+10px)</h3>
+			<img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/D8E0/production/_122602555_e9360ffd-0acf-4dbe-b13a-4561b61e46c1.jpg" alt="고양이1" id="img1">
+			<h3>이미지 바꾸기 (5개 순환)</h3>
+			<img src="../img/1.png" alt="고양이2" id="img2">
+		</div>
+		<div>
+			<h3>계산기 만들기</h3>
+		</div>
+	</div>
+</body>
+</html>

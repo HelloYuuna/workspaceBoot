@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Jq1</title>
+    <script th:src="@{/jq/jquery-3.6.0.js}"></script>
+    <script>
+		/*
+		 * Selector
+		 * 전체*, 태그, #id, .class, >자식, ' '(띄어쓰기) 하위
+		 * JQuery 는 채이닝이 가능하다!
+		 */
+
+		$(document).ready(function() {
+            // 전체선택자
+            $('*').css('color','#354f52');
+
+            // 태그 선택자
+            $('p').css('color','#52796f');
+			$('h2').css('border-bottom','1px dashed #c9e4ca');
+
+            // ID 선택자
+            $('#text1').css('color','#ffbf69');
+
+            // class selector
+            $('.text2').css('color','#f4978e');
+
+            // group selector
+            $('h2,div').css('color','#89b0ae');
+
+            // child selector
+            $('body>p').css('color','#c8b6ff');
+
+            // descendant selector
+            $('body p').css('color','#6b705c');
+
+            // 종속 선택자 (체이닝가능)
+            $('p.text3').css('color','#76c893');
+
+            // 종속 + 자식 + 하위 선택자
+            $('body div p.text3').css('color','#ffbf69');
+
+            // 속성 선택자
+			// $('input[type=password]').css('background','#d4e09b');
+            $(':password').css('background','#d4e09b');
+		});
+    </script>
+</head>
+<body>
+	<h2 class="text3">[jQuery 기본 문법, 선택자]</h2>
+	<p>p태그를 이용한 텍스트</p>
+	<p>p태그를 이용한 텍스트</p>
+	<p id="text1">p태그를 이용한 텍스트</p>
+	<p class="text2">p태그를 이용한 텍스트</p>
+	<p class="text2 text3">p태그를 이용한 텍스트</p>
+	<div>
+		<p>div태그 내의 p태그</p>
+		<p class="text3">div태그 내의 p태그</p>
+	</div>
+	<form>
+		<input type="text" name="" id="" placeholder="text">
+		<input type="password" name="" id="" placeholder="pw">
+		<input type="number" name="" id="" placeholder="number">
+		<input type="submit" value="전송">
+	</form>
+</body>
+</html>

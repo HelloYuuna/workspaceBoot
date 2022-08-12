@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Jq1</title>
+	<style>
+		h3 {
+			color: #2a9d8f;
+		}
+
+		input {
+			height: 20px;
+			width: 100px;
+			padding-left: 5px;
+			border-radius: 6px;
+			border: 1px solid #2a9d8f;
+		}
+
+        input[type=button]:hover {
+			background: #94d2bd;
+		}
+
+        input[type=button]:active {
+			background: #0a9396;
+		}
+
+        .textChange {
+			margin-top: 30px;
+		}
+
+		#div1, #div2 {
+            margin-top: 10px;
+		}
+		#div2 {
+			margin-bottom: 10px;
+		}
+
+		.classA {
+			width: 100px;
+			height: 100px;
+			background: #94d2bd;
+			border: 1px solid #606c38;
+		}
+
+		.classB {
+			width: 300px;
+			height: 300px;
+			background: #0a9396;
+			border: 1px dashed #606c38;
+		}
+	</style>
+    <script th:src="@{/jq/jquery-3.6.0.js}"></script>
+    <script>
+		$(document).ready(function() {
+            // btn1
+            $('#btn1').on('click', function() {
+                /* 첫번째 요소만 html태그 포함 읽어들임 */
+                // let s = $('h3').html();
+                // console.log(s);
+                // alert(s);
+
+				/* html()을 each를 써서 배열로 모든 요소를 읽어오기
+				 * : 요소갯수만큼 배열로 모두 읽기
+				 * i 요소개수 / obj 객체 (객체는 $기호로 호출)
+				 */
+                $('h3').each(function(i, obj) {
+                    alert(i + ', ' + $(obj).html());
+				});
+            });
+
+            // btn2 : 텍스트로 모든 요소 읽어들임
+            $('#btn2').on('click', function() {
+                let s = $('h3').text();
+                console.log(s);
+                alert(s);
+            });
+
+            // btn3
+            $('#btn3').on('click', function() {
+                // text 박스의 내용을 string 타입으로 읽어들음
+                let s = $('#text1').val();
+                console.log(s);
+                alert(s);
+            });
+
+            // btn4 html() 내용변경
+			$('#btn4').click(function() {
+				$('#div1').html('<p style="color:#d4e09b;">변경한 내용<br>줄도&nbsp;바꿔본다!</p>');
+				$('#div2').text('<b>두껍게</b>&nbsp;변경한 내용2');
+                $('#text2').val('내용을 변경해보자!');
+			});
+
+            // btn5 attr
+            $('#btn5').click(function(){
+                // src 속성을 읽어옴
+                let s = $('#img1').attr('src');
+                alert(s);
+                $('#img1').attr('src','https://1.gall-img.com/hygall/files/attach/images/82/509/771/157/30d48ddd499ed4315c268e1f4bbf0afe.jpg');
+			});
+
+            // btn6
+            $('#btn6').click(function(){
+                let w = $('#img1').css('width');
+                let h = $('#img1').css('height');
+                alert(w, ',' + h);					// 100px
+
+                $('#img1').css('width', '300px');
+                $('#img1').css('height', '300px');
+            });
+
+            // img2
+            $('#img2').on('mouseenter', function() {
+                $('#img2').css('width','500px');
+			});
+
+            // img2
+            $('#img2').on('mouseleave', function() {
+               $('#img2').css('width','200px');
+			});
+
+            // btn7 클릭하면 정의된 스타일 부여 & 제거
+            $('#btn7').on('click',function() {
+				$('#img1').addClass('classB');
+                $('#img1').removeClass('classA');
+			});
+
+            // btn8
+            $('#btn8').on('click',function() {
+				$('#img1').removeClass('classB');
+				$('#img1').addClass('classA');
+            });
+		});
+    </script>
+</head>
+<body>
+	<div class="container">
+		<h2 class="">문서 조작 메소드</h2>
+		<pre>	html(), text(), val(), attr(), css(), addClass(), removeClass()</pre>
+		<div class="input">
+			<p><input type="button" value="html()" id="btn1"></p>
+			<p><input type="button" value="text()" id="btn2"></p>
+			<p><input type="button" value="val()" id="btn3"></p>
+		</div>
+		<div class="h3tag">
+			<h3><strong>h3</strong> 태그를 이용한 문자열1</h3>
+			<h3><i>h3</i> 태그를 이용한 문자열2</h3>
+			<input type="text" id="text1" placeholder="textbox">
+		</div>
+		<div class="textChange">
+			<input type="button" value="btn4" id="btn4">
+			<div id="div1">aaaa</div>
+			<div id="div2">bbbb</div>
+			<input type="text" id="text2" value="cccc">
+		</div>
+		<div class="images">
+			<p><input type="button" id="btn5" value="attr()함수"></p>
+			<p><input type="button" id="btn6" value="css()함수"></p>
+			<p><img src="https://t1.daumcdn.net/cfile/tistory/9920784E5CF3C9321A" alt="cat" id="img1"></p>
+			<p><img src="https://t1.daumcdn.net/cfile/tistory/9920784E5CF3C9321A" alt="cat" id="img2"></p>
+		</div>
+		<div>
+			<input type="button" value="btn7" id="btn7">
+			<input type="button" value="btn8" id="btn8">
+		</div>
+	</div>
+</body>
+</html>

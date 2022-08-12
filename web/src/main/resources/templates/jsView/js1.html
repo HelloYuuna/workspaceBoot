@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Js1</title>
+	<script th:src="@{/js/js1.js}"></script>
+	<script th:src="@{/js/calc.js}"></script>
+	<style>
+		input[type=text] {
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+<!--	<script>-->
+<!--		alert('3');						// 2번째 실행-->
+<!--	</script>-->
+	<div>
+		<h2>JS 기본 문법</h2>
+<!--	id: 겹치지않는 유일값, JS로 제어	-->
+<!--	class: 여러곳으로 부여 가능하며 JS로 다중 제어	-->
+		<p>
+			<a href="javascript:test1()">링크로 함수 호출</a>
+		</p>
+		<p>
+			<input type="button" value="함수1호출(onclick)" onclick="test1()">
+			<input type="button" value="함수1호출(onload)" id="btn1">
+		</p>
+		<p>
+			<input type="button" value="함수2호출(onload)" onclick="test2()">
+		</p>
+<!--	<script>-->
+<!--		alert('4');						// 3번째 실행-->
+<!--	</script>-->
+		<p>
+			<a href="javascript:test2()">변수와 자료형</a>
+		</p>
+		<hr style="border: 1px dashed #010101;">
+		<p>
+			<a href="javascript:test3()">계산</a>
+		</p>
+		<form>
+			<p>
+				<input type="text" id="text1" value="0" onfocus="focusIn(this)">
+				<select class="oper" name="oper" id="oper" onchange="calculator()">
+					<optgroup label="operator">
+						<option value="+">+</option>
+						<option value="-">-</option>
+						<option value="*">x</option>
+						<option value="/">/</option>
+					</optgroup>
+				</select>
+				<input type="text" id="text2" value="0" onfocus="focusIn(this)">
+				<span>=</span>
+				<input type="text" id="text3" value="0" readonly>
+				<span id="result"></span>
+			</p>
+			<p>
+				<input onclick="calculator()" type="button" value="계산">
+				<input type="reset" value="초기화">
+			</p>
+		</form>
+	</div>
+</body>
+</html>

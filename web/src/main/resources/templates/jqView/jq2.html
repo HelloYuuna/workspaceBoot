@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>jq2</title>
+	<script th:src="@{/jq/jquery-3.6.0.js}"></script>
+	<style>
+
+	</style>
+	<script>
+		$(document).ready(function() {
+            $(':text').css('border-radius','7px').css('border','2px solid #ffbf69').css('line-height','30px');
+            $('.content').css('display','inline-block').css('height','500px').css('float');
+            $('.image').css('display','inline-block').css('height','500px').css('float');
+
+            /* on */
+            // 이벤트 연결 - btn1을 클릭하면 실행
+			// $('#btn1').on('click',btn1Cl ick);
+			$('#btn1').click(btn1Click);
+			$('#btn2').on('click',btn1ClickOff);
+			$('#btn3').on('click',btn3Click);
+
+            // 키보드에서 손을 뗄때마다 발생
+            $('#text1').on('keyup', function() {
+               alert('keyup 이벤트');
+			});
+
+            $('#img1').css('width','400px').mouseenter(function() {
+               alert('고양이!');
+			});
+
+		});
+
+        function btn1Click() {
+            alert('버튼1 클릭');
+		}
+
+        /* off */
+        function btn1ClickOff() {
+            /*
+             * 모든 조건을 만족했을때 이벤트를 실행시키는 방법등으로
+             * 사용될 수 있음
+             */
+            $('#btn1').off();						// 모든 이벤트 제거
+            // $('#btn1').off('click');					// click 이벤트 제거
+            // $('#btn1').off('click', btn1Click);		// click 이벤트시 실행되는 btn1Click 이벤트 제거
+        }
+
+        /* trigger */
+        function btn3Click() {
+            // 클릭하지 않아도 강제로 이벤트 발생시킴 (시간제한 걸어서 실행시키는 방법에 사용)
+			$('#btn1').trigger('click');
+
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h2>이벤트</h2>
+		<pre>	on(), off(), trigger()</pre>
+		<!--	이미지 위에 마우스 포인터가 올라가면 대화상자 오픈 -->
+		<div class="image">
+			<img src="http://blog.21stessentialpet.com/wp-content/uploads/2018/06/Munchkin_cat_2.jpg" alt="img1" id="img1">
+		</div>
+		<div class="content">
+			<p><input type="button" value="버튼1" id="btn1"></p>
+			<p><input type="button" value="버튼2" id="btn2"></p>
+			<p><input type="button" value="버튼3(버튼1이벤트 강제발생)" id="btn3"></p>
+			<p><input type="text" id="text1" placeholder="글 쓰다가 떼면 이벤트 발생!"></p>
+		</div>
+	</div>
+</body>
+</html>

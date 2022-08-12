@@ -1,0 +1,31 @@
+div.container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #fff;
+    background: #2a9d8f;
+    padding: 10px 0 10px 10px;
+}
+
+h3 {
+    color: #2a9d8f;
+}
+
+p {
+    text-indent: 2em;
+}
+
+a, a:visited {
+    color: #606c38;
+}
+
+a:hover {
+    color: #0a9396;
+    font-weight: 600;
+}
+
+a:active {
+    color: #94d2bd;
+}
