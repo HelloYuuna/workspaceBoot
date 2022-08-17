@@ -53,25 +53,30 @@
 			$('#img2').click(test2);
 		});
 
+        /* 이미지 크기 증가 */
         function test1() {
 			let w = $(this).width();			// 객체의 너비
 			let h = $(this).height();			// 객체의 높이
 			$('#img1').css('width', w+10).css('height', h+10);
 		}
 
+        /* 이미지 계속 변경 */
+		let index = 0;													// 전역으로 선언하지 않으면 한번만 변경됨
         function test2() {
-            let cat1 = '../img/1.png';
-            let cat2 = '../img/2.png';
-            let cat3 = '../img/3.png';
-            let cat4 = '../img/4.png';
-            let cat5 = '../img/5.png';
-			let catArr = [cat1,cat2,cat3,cat4,cat5];
+            let catArr = ['cat1', 'cat2', 'cat3', 'cat4', 'cat5'];
 
-            $(catArr).each(function(i, cat){
-                $('#img2').attr('src',cat);
-                // console.log(cat);
-			});
+            if(index === catArr.length-1) { index = 0; }
+            else { index++; }
+
+            $(this).attr("src","../img/" + catArr[index] + ".png");
+            console.log(catArr[index]);
 		}
+
+        /* calulatr */
+		function test3(){
+
+		}
+
     </script>
 </head>
 <body>
@@ -81,10 +86,73 @@
 			<h3>이미지 크기 변경 (+10px)</h3>
 			<img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/D8E0/production/_122602555_e9360ffd-0acf-4dbe-b13a-4561b61e46c1.jpg" alt="고양이1" id="img1">
 			<h3>이미지 바꾸기 (5개 순환)</h3>
-			<img src="../img/1.png" alt="고양이2" id="img2">
+			<img src="../img/cat1.png" alt="고양이2" id="img2">
 		</div>
 		<div>
 			<h3>계산기 만들기</h3>
+			<div class="calc_field">
+				<table class="calc">
+					<tr>
+						<td colspan="4"></td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" value="7">
+						</td>
+						<td>
+							<input type="button" value="8">
+						</td>
+						<td>
+							<input type="button" value="9">
+						</td>
+						<td>
+							<input type="button" value="+">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" value="4">
+						</td>
+						<td>
+							<input type="button" value="5">
+						</td>
+						<td>
+							<input type="button" value="6">
+						</td>
+						<td>
+							<input type="button" value="-">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" value="1">
+						</td>
+						<td>
+							<input type="button" value="2">
+						</td>
+						<td>
+							<input type="button" value="3">
+						</td>
+						<td>
+							<input type="button" value="*">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" value="0">
+						</td>
+						<td>
+							<input type="button" value=".">
+						</td>
+						<td>
+							<input type="button" value="=">
+						</td>
+						<td>
+							<input type="button" value="/">
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
 </body>

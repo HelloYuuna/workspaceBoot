@@ -39,4 +39,10 @@ public class JQController {
     public String jqPrac() {
         return "/jqView/jq5";
     }
+
+    @GetMapping("/jq6")
+    public String jq6() {
+        return "/jqView/jq6";
+    }
+
 }

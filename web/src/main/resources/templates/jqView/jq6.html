@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Jq6</title>
+	<style>
+		body {
+			color: #6d6875;
+		}
+
+		.container {
+			width: 600px;
+			margin: 0 auto;
+		}
+
+		h2 {
+			text-align: center;
+		}
+
+		h3 {
+			margin-bottom: 0;
+		}
+
+		div.textDiv {
+			padding-left: 10px;
+			background: #606c38;
+			border-radius: 6px;
+			border: 1px dashed #2a9d8f;
+			color: #fff;
+		}
+
+		input[type=button] {
+			padding: 10px;
+			border-radius: 7px;
+			border: none;
+			color: #ffffff;
+			background: #606c38;
+			margin-right: 5px;
+            /*box-shadow: 2px 2px 2px 2px #606c38;*/
+		}
+
+        input[type=button]:hover {
+			background: #2a9d8f;
+            padding: 9px;
+			border: 2px solid #6d6875;
+		}
+
+        input[type=button]:active {
+			background: #adc178;
+		}
+
+		.btn {
+			text-align: center;
+			margin-bottom: 15px;
+		}
+
+	</style>
+    <script th:src="@{/jq/jquery-3.6.0.js}"></script>
+    <script>
+		$(document).ready(function() {
+            /* 버튼을 클릭하면 사라지고 나타나기 */
+			$('#btn1').click(function() {
+               $('.textDiv').show('slow');
+			});
+
+            $('#btn2').click(function() {
+                $('.textDiv').hide('slow');
+            });
+
+		});
+
+    </script>
+</head>
+<body>
+	<div class="container">
+		<h2>Animation effect</h2>
+		<div class="btn">
+			<input type="button" value="show()" id="btn1">
+			<input type="button" value="hide()" id="btn2">
+			<input type="button" value="toggle()" id="btn3">
+			<input type="button" value="slideDown()" id="btn4">
+			<input type="button" value="slideUp()" id="btn5">
+			<input type="button" value="fadeIn()" id="btn6">
+			<input type="button" value="fadeOut()" id="btn7">
+		</div>
+		<div class="textDiv">
+			<p>div 태그 내의 문자열</p>
+			<p>div 태그 내의 문자열</p>
+			<p>div 태그 내의 문자열</p>
+		</div>
+	</div>
+</body>
+</html>

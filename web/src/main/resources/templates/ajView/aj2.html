@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax2</title>
+	<script th:src="@{/jq/jquery-3.6.0.js}"></script>
+	<style>
+        body {
+            color: #94d2bd;
+        }
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+			border-bottom: 1px solid #94d2bd;
+			padding-bottom: 10px;
+        }
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		input[type=text],
+		input[type=tel],
+		input[type=number] {
+			line-height: 25px;
+			width: 90px;
+			padding-left: 10px;
+			margin-left: 10px;
+			border-radius: 6px;
+			border: 1px solid #94d2bd;
+		}
+
+		input[type=button] {
+			margin: 10px 0 30px 0;
+		}
+
+        table,th,td {
+			border-collapse: collapse;
+			border: 1px solid #0a9396;
+			padding: 10px;
+		}
+
+	</style>
+	<script>
+		/* JQuery */
+		$(document).ready(function() {
+			$('#formBtn1').click(formSubmit1);
+			$('#formBtn2').click(formSubmit2);
+			$('#formBtn3').click(formSubmit3);
+
+			/* text와 Json으로 객체 받기 */
+			$('#btn1').click(getObj1);
+			$('#btn2').click(getObj2);
+			$('#btn3').click(getObj3);
+		});
+
+        /**
+		 * 각 파라메터 값으로 받기
+         */
+        function formSubmit1() {
+			let name = $('#name').val();							// input type #name의 값을 읽음
+			let age = $('#age').val();
+			let phone = $('#phone').val();
+
+            if (name == '') {
+                alert('이름 입력');
+                return;
+
+            } else if (age == '') {
+                alert('나이 입력');
+                return;
+
+            } else if (phone == '') {
+                alert('전화번호 입력');
+                return;
+            }
+
+            $.ajax({
+                url: 'insert1',
+                type: 'post',
+                data: {name:name, age:age, phone:phone},
+                success: function () {
+                    alert('전송 완료');
+                    $('#name').val('');
+                    $('#age').val(0);
+                    $('#phone').val('');
+                },
+                error: function (e) {
+                    alert('저장 실패');
+                    JSON.stringify(e);
+                    $('#name').val('');
+                    $('#age').val(0);
+                    $('#phone').val('');
+                }
+            });
+        }
+
+        /* 서버에서 Person객체로 받기 */
+        function formSubmit2() {
+            let name = $('#name2').val();
+            let age = $('#age2').val();
+            let phone = $('#phone2').val();
+
+            $.ajax({
+				url:'insert2',
+				type:'post',
+				data: {name:name, age:age, phone:phone},
+                success: function () {
+                    alert('전송 완료');
+                    $('#name2').val('');
+                    $('#age2').val(0);
+                    $('#phone2').val('');
+                },
+                error: function (e) {
+                    alert('저장 실패');
+                    JSON.stringify(e);
+                    $('#name2').val('');
+                    $('#age2').val(0);
+                    $('#phone2').val('');
+                }
+			});
+		}
+
+        /* 서버에서 name값을 이용하여 객체 받기 */
+        function formSubmit3() {
+            let form = $('#writeForm3').serialize();
+            alert(form);
+            $.ajax({
+				url:'insert3',
+				type:'post',
+				data: $('#writeForm3').serialize(),				// form안의 데이터를 보냄, 직렬화를 위해서 name속성이 필요
+				success: function() {
+					alert('saved!');
+				},
+				error: function() {
+					alert('failed!');
+				}
+			})
+		}
+
+        /* text형태로 객체를 서버에서 클라로 받기 */
+        function getObj1() {
+			$.ajax({
+				url:'getObject',
+				type: 'get',
+				dataType: 'text',						// text 형태로 찍을 뿐 활용 불가
+				success: function(obj) {
+					alert('text타입으로 받기');
+                    $('#output1').html(obj);
+				},
+				error: function() {
+					alert('실패');
+				}
+			});
+		}
+
+        /* JSON형태로 객체를 서버에서 클라로 받기 */
+        function getObj2() {
+            $.ajax({
+                url:'getObject',
+                type: 'get',
+                dataType: 'json',
+                success: function(obj) {
+                    alert('json타입으로 받기');
+                    let person = obj.name + '<br>' + obj.age + '살<br>' + obj.phone;
+                    $('#output2').html(person);
+                },
+                error: function() {
+                    alert('실패');
+                }
+            });
+		}
+
+        /* JSON형태 객체배열로 서버에서 클라로 받기 */
+        function getObj3() {
+            $.ajax({
+                url:'getList',
+                type: 'get',
+                dataType: 'json',
+                success: function(obj) {
+                    alert('json타입 배열로 받기');
+                    // console.log(obj);
+                    let data = '';
+
+                    $.each(obj, function(i, ob){
+						// alert(this.name);
+						// alert(this.age);
+						// alert(this.phone);
+						// data += ob.name + '<br>' + ob.age + '<br>' + ob.phone + '<br>';
+						// alert(ob.name);
+                    	$('#table').append('<tr><td>' + ob.name + '</td><td>'
+							+ ob.age + '</td><td>' + ob.phone + '</td></tr>');
+                    });
+
+					// $('#output3').html(data);
+                },
+                error: function() {
+                    alert('실패');
+                }
+            });
+        }
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h2>Ajax 객체 보내기/받기</h2>
+		<p>1. 서버로 각각의 Parameter를 전달</p>
+		<form id="writeForm1">
+			<label>이름<input type="text" id="name"></label>
+			<label>나이<input type="number" id="age"></label>
+			<label>전화<input type="tel" id="phone"></label>
+			<input type="button" value="저장" id="formBtn1">
+		</form>
+		<p>2. 서버로 객체 전달</p>
+		<form id="writeForm2">
+			<label>이름<input type="text" id="name2"></label>
+			<label>나이<input type="number" id="age2"></label>
+			<label>전화<input type="tel" id="phone2"></label>
+			<input type="button" value="저장" id="formBtn2">
+		</form>
+		<p>3. 서버로 객체 전달</p>
+		<form id="writeForm3" th:object="${person}">
+			<label>이름<input type="text" id="name3" th:field="*{name}"></label>
+			<label>나이<input type="number" id="age3" th:field="*{age}"></label>
+			<label>전화<input type="tel" id="phone3" th:field="*{phone}"></label>
+			<input type="button" value="저장" id="formBtn3">
+		</form>
+		<p>4. 서버로 객체를 text로 가져오기</p>
+		<div id="output1"></div>
+		<input type="button" id="btn1" value="객체 받기">
+		<p>5. 서버로 객체를 Json으로 가져오기</p>
+		<div id="output2"></div>
+		<input type="button" id="btn2" value="객체 받기">
+		<p>6. 서버로 객체를 Json으로 가져오기(array)</p>
+		<div id="output3">
+			<table id="table">
+				<tr>
+					<th>이름</th>
+					<th>나이</th>
+					<th>전화번호</th>
+				</tr>
+			</table>
+		</div>
+		<input type="button" id="btn3" value="객체 받기">
+	</div>
+</body>
+</html>

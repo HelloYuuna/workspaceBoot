@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax3</title>
+	<script th:src="@{/jq/jquery-3.6.0.js}"></script>
+	<style>
+        body {
+            color: #94d2bd;
+        }
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+			border-bottom: 1px solid #94d2bd;
+			padding-bottom: 10px;
+        }
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		input[type=text],
+		input[type=tel],
+		input[type=number] {
+			line-height: 25px;
+			width: 90px;
+			padding-left: 10px;
+			margin-left: 10px;
+			border-radius: 6px;
+			border: 1px solid #94d2bd;
+		}
+
+		input[type=button] {
+			margin: 10px 0 30px 0;
+		}
+
+        a, a:visited {
+            color: #606c38;
+        }
+
+        a:hover {
+            color: #0a9396;
+            font-weight: 600;
+        }
+
+        a:active {
+            color: #94d2bd;
+        }
+
+	</style>
+	<script>
+		/* JQuery */
+		$(document).ready(function() {
+			$('#btn').click(function() {
+				$.ajax({
+					url:'vote',
+					type:'get',
+					data: {boardnum: $(this).attr('boardnum')},
+					success: function(num){
+						// 화면에 추천수 갱신
+					},
+					error: function(e) {
+                        alert('error!');
+						JSON.stringify(e);
+					}
+				})
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h2>Ajax 추천 기능</h2>
+		<input type="button" id="btn" boardnum="1" value="추천">
+		<p>추천수: <span id="cnt">0</span></p>
+	</div>
+</body>
+</html>

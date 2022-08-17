@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax1</title>
+	<script th:src="@{/jq/jquery-3.6.0.js}"></script>
+	<style>
+        body {
+            color: #6d6875;
+        }
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+			border-bottom: 1px solid #94d2bd;
+        }
+
+        a, a:visited {
+            color: #606c38;
+        }
+
+        a:hover {
+            color: #0a9396;
+            font-weight: 600;
+        }
+
+        a:active {
+            color: #94d2bd;
+        }
+	</style>
+
+	<script>
+        function test1() {
+            alert('test1 실행!');					// 먼저 실행
+            $.ajax({
+				url: 'test1',
+				type: 'get',
+				success: function () {
+                	alert('연결 성공!');				// 마지막 실행 (콘트롤러에서 클라측에 리턴되는 곳)
+				},
+				error: function() {
+                	alert('연결 실패!');
+				}
+            });
+
+            alert('test1 함수 끝');				// 자바 객체(test1 method) 실행 후, 실행
+		}
+
+		function test2() {
+            alert('test2 함수 호출!');
+
+            $.ajax({
+				url:'test2',								// 잘못된url 호출 404
+				type:'post',
+				data: {str:'서버로 보낼 문자열'},				// 클라에서 서버로 { 파라미터name: value } 전송
+				success: function() {
+                    alert('성공');
+				},
+                error: function(args) {
+                    alert('실패');
+                    // alert(args);							// object Object
+                    alert(JSON.stringify(args));			// 에러문자 구조를 문자열화해서 출력
+                    alert(args.status);						// 에러문자의 status 출력
+				}
+			});
+
+            alert('test2 함수 종료!');
+		}
+
+        function test3() {
+            alert('test3 start!');
+            $.ajax({
+				url:'test3',
+				type:'get',
+				dataType: 'text',					// 서버에서 받아올 데이터 형식, 생략하면 자동으로 타입을 맞춰줌
+				success: function(res) {			// 서버에서 클라로 넘어오는 값
+					console.log(res);
+                    $('#output').html(res);			// DB에서 값을 가져와서 보여줄 수 있음
+				},
+				error: function (e) {
+					JSON.stringify(e);
+				}
+			});
+
+            alert('test3 end!');
+		}
+
+        /*
+		 * word1의 내용을 서버로 보내서
+         * 서버에서 대문자로 변환해서
+         * 다시 클라에서 출력
+         */
+        function test4() {
+            console.log('test4 start');
+            let word1 = $('#word1').html();
+			$.ajax({
+				url:'test4',
+				type:'get',
+				data: { str: word1 },
+				dataType: 'text',						// 생략가능
+				success: function (str) {
+					console.log('서버에서 받은' + str);
+                    $('#word2').html(str);
+				} ,
+				error: function (e) {
+                    JSON.stringify(e);
+				}
+			});
+
+            console.log('test4 end');
+		}
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h2>Ajax 요청과 응답</h2>
+		<p><a href="javascript:test1()">서버로 요청보내기</a></p>
+		<p><a href="javascript:test2()">서버로 문자열보내기</a></p>
+		<p><a href="javascript:test3()">클라이언트로 문자열보내기</a></p>
+		<div id="output"></div>
+		<p><a href="javascript:test4()">예제</a></p>
+		<div id="word1">abcdef</div>
+		<div id="word2"></div>
+	</div>
+</body>
+</html>
