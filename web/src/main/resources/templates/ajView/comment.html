@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Comment</title>
+	<link rel="stylesheet" th:href="@{/css/comment.css}">
+	<script th:src="@{/jq/jquery-3.6.0.js}"></script>
+	<script th:src="@{/js/comment.js}"></script>
+</head>
+<body>
+<div class="container">
+	<h2>Ajax Comment</h2>
+<!--	댓글 작성 폼 -->
+	<div id="cmntWrite_field">
+		<form>
+			<label>Name<input type="text" name="" id="name"></label>
+			<label>Comment<input type="text" name="" id="cmnt"></label>
+			<div id="submit_field">
+				<input type="button" value="Submit" id="btn">
+			</div>
+		</form>
+	</div>
+<!--	댓글 목록 출력 영역 -->
+	<div id="commentList">
+		<h3>Comment</h3>
+		<span id="noCmnt"></span>
+<!--/*		<span th:if="${comments eq null} or ${comments.size() eq 0}">저장된 댓글이 없습니다.</span>
+		<div class="th_comment" th:each="comments : ${comments}">
+			<table>
+				<tr >
+					<td><span th:text="|${comments.num} 번|">코멘트 번호</span></td>
+					<td><span th:text="|${comments.name} :|">작성이</span></td>
+					<td><span th:text="${comments.text}">내용</span></td>
+				</tr>
+			</table>
+		</div> 					*/-->
+		<div id="th_comment">
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

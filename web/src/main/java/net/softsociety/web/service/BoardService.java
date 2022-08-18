@@ -9,4 +9,5 @@ package net.softsociety.web.service;
 public interface BoardService {
 
     int updateCnt(int boardnum);
+
 }

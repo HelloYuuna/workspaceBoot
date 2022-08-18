@@ -64,14 +64,14 @@
 					data: { boardnum: $(this).attr('boardnum') },
 					success: function(num){
 						// 화면에 추천수 갱신
-						alert('성공');
+						// alert('성공');
 						$('#cnt').html(num);
 					},
 					error: function(e) {
                         alert('error!');
 						JSON.stringify(e);
 					}
-				})
+				});
 			});
 		});
 	</script>
@@ -80,7 +80,7 @@
 	<div class="container">
 		<h2>Ajax 추천 기능</h2>
 		<input type="button" id="btn" boardnum="1" value="추천">
-		<p>추천수: <span id="cnt">0</span></p>
+		<p>추천수: <span id="cnt"></span></p>
 	</div>
 </body>
 </html>
