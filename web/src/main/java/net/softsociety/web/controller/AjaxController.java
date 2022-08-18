@@ -2,6 +2,8 @@ package net.softsociety.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import net.softsociety.web.domain.Person;
+import net.softsociety.web.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,9 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/ajax")
 public class AjaxController {
+
+    @Autowired
+    private BoardService service;
 
     @GetMapping("/aj1")
     public String ajax1() {
@@ -118,10 +123,8 @@ public class AjaxController {
     @GetMapping("/vote")
     public int increaseToVote(int boardnum) {
         log.debug("보드번호: {}", boardnum);
-        // 전달받은 글 번호의 추천수 1증가
-        // 현재 추천수 읽어와서 리턴
-        int num = 0;
-        return num;
+        // 전달받은 글 번호의 추천수 1증가 + select 가져오기
+        return service.updateCnt(boardnum);
     }
 
 }

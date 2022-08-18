@@ -2,5 +2,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.softsociety.web.dao.BoardDAO">
+    <update id="updateCnt" parameterType="int">
+        update WEB_RECOMMEND
+        set CNT = CNT + 1
+        where BOARDNUM = #{boardnum}
+    </update>
 
+    <select id="selectCnt" parameterType="int" resultType="int">
+        select CNT from WEB_RECOMMEND
+        where BOARDNUM = #{boardnum}
+    </select>
 </mapper>

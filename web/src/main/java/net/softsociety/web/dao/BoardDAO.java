@@ -11,4 +11,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface BoardDAO {
+
+    int updateCnt(int boardnum);
+
+    int selectCnt(int boardnum);
 }

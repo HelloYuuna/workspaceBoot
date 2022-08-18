@@ -61,9 +61,11 @@
 				$.ajax({
 					url:'vote',
 					type:'get',
-					data: {boardnum: $(this).attr('boardnum')},
+					data: { boardnum: $(this).attr('boardnum') },
 					success: function(num){
 						// 화면에 추천수 갱신
+						alert('성공');
+						$('#cnt').html(num);
 					},
 					error: function(e) {
                         alert('error!');

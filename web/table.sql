@@ -6,3 +6,7 @@ create table web_recommend (
 
 insert into web_recommend (boardnum) values (1);
 
+commit;
+
+select * from WEB_RECOMMEND;
+
