@@ -50,4 +50,11 @@ public class CommnetRestController {
 
         return comments;
     }
+
+    @GetMapping("/cmntDel")
+    public int cmntDel(int num) {
+        log.debug("넘어온 글번호: {}", num);
+
+        return service.deleteCmnt(num);
+    }
 }

@@ -11,4 +11,9 @@
         SELECT * FROM WEB_COMMENT
         ORDER BY NUM
     </select>
+
+    <delete id="deleteCmnt" parameterType="int">
+        DELETE FROM WEB_COMMENT
+        WHERE NUM = #{num}
+    </delete>
 </mapper>

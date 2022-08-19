@@ -29,4 +29,9 @@ public class CommnetServiceImpl implements CommnetService {
     public List<Comment> selectAllCmnt() {
         return dao.selectAllCmnt();
     }
+
+    @Override
+    public int deleteCmnt(int num) {
+        return dao.deleteCmnt(num);
+    }
 }

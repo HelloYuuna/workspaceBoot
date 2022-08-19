@@ -225,7 +225,7 @@
 			<input type="button" value="저장" id="formBtn2">
 		</form>
 		<p>3. 서버로 객체 전달</p>
-		<form id="writeForm3" th:object="${person}">
+		<form id="writeForm3" th:object="${person}">			<!-- serialize 를 위해 name 속성을 꼭 붙여줌 -->
 			<label>이름<input type="text" id="name3" th:field="*{name}"></label>
 			<label>나이<input type="number" id="age3" th:field="*{age}"></label>
 			<label>전화<input type="tel" id="phone3" th:field="*{phone}"></label>

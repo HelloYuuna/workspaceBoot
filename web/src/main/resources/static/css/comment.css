@@ -62,6 +62,9 @@ input#cmnt {
 
 #submit_field #btn {
     margin: 10px 0 30px 0;
+}
+
+input[type=button] {
     border: 1px solid #94d2bd;
     border-radius: 6px;
     background-color: rgba(0,0,0,0);

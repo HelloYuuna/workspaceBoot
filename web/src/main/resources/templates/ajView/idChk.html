@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>ID Check</title>
+	<link rel="stylesheet" th:href="@{/css/comment.css}">
+	<link rel="stylesheet" th:href="@{/css/idChk.css}">
+	<script th:src="@{/jq/jquery-3.6.0.js}"></script>
+	<script th:src="@{/js/idChk.js}"></script>
+</head>
+<body>
+    <div class="container">
+		<h2>ID Check</h2>
+        <div id="input_field">
+            <form>
+				<span id="idLenghtChk"></span>
+				<label>ID
+					<input type="text" name="" id="memberid">
+					<input type="button" value="check" id="btn">
+				</label>
+				<label>Name
+					<input type="text" name="" id="membername">
+				</label>
+				<div id="submit_area">
+					<input type="submit" value="submit" id="submit" disabled="disabled">
+					<input type="reset" value="reset" id="reset">
+				</div>
+            </form>
+    </div>
+</div>
+</body>
+</html>

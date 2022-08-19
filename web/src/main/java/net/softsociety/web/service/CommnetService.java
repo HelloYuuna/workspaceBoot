@@ -17,4 +17,6 @@ public interface CommnetService {
     // 모든 댓글 목록 가져오기
     List<Comment> selectAllCmnt();
 
+    // 댓글 한행 삭제
+    int deleteCmnt(int num);
 }

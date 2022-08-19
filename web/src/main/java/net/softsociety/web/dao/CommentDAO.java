@@ -19,4 +19,7 @@ public interface CommentDAO {
 
     // 모든 댓글 목록
     List<Comment> selectAllCmnt();
+
+    // 댓글 한행 삭제
+    int deleteCmnt(int num);
 }
