@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>판매 상품 검색</title>
+  <script th:src="@{/js/jquery-3.6.0.js}"></script>
+  <!--	<script th:src="@{/js/searchItem.js}"></script>-->
+  <script>
+    $(document).ready(function () {
+      $('#category').change(selectItem);
+      $('#title').keyup(selectItem);
+    });
+
+    function selectItem() {
+      let category = $('#category option:selected').val();
+      let title = $('#title').val();
+      let boardnum = $('#boardnum').val();
+
+      console.log(category);
+      console.log(title);
+
+      $.ajax({
+        url:'search',
+        type:'post',
+        data: { category:category, title:title, boardnum:boardnum },
+        success: function() {
+          // alert('성공');
+        },
+        error: function(e) {
+          JSON.stringify(e);
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+<h1>[ 판매 상품 검색 ]</h1>
+<p>
+  <select name="category" id="category">
+    <option value="all" selected>전체</option>
+    <option value="computer">컴퓨터</option>
+    <option value="car">자동차</option>
+    <option value="camera">카메라</option>
+  </select>
+  <input type="text" name="title" id="title">
+</p>
+<div>
+  <table id="item">
+    <tr>
+      <th>번호</th>
+      <th>카테고리</th>
+      <th>제목</th>
+    </tr>
+    <tr th:each="boards : ${boards}">
+      <td th:text="${boards.boardnum}"></td>
+      <td th:text="${boards.category}"></td>
+      <td th:text="${boards.title}"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

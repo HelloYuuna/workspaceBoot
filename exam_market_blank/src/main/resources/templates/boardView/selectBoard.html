@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>판매정보</title>
+	<script th:src="@{/js/jquery-3.6.0.js}"></script>
+	<script th:src="@{/js/selectBoard.js}"></script>
+	<style>
+        #reply {
+	        margin-top: 30px;
+        }
+
+        input[type=text] {
+	        width: 300px;
+        }
+
+        table {
+	        width: 400px;
+        }
+	</style>
+</head>
+<body>
+	<h1>[ 판매 정보 ]</h1>
+	<div class="container" th:object="${board}">
+		<table>
+			<tr>
+				<th>작성자</th>
+				<td><span th:text="*{memberid}">memberid</span></td>
+			</tr>
+			<tr>
+				<th>작성일</th>
+				<td><span th:text="*{inputdate}">inputdate</span></td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td><span th:text="*{title}">title</span></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td><pre><span th:text="*{contents}">contents</span></pre></td>
+			</tr>
+			<tr>
+				<th></th>
+				<!--/* 로그인 아이디와 같다면 */-->
+				<td th:if="${#authentication.name} eq *{memberid}">
+					<a th:href="|javascript:deleteBoard(*{boardnum})|">삭제</a>
+				</td>
+				<!--/* 로그인 아이디와 같지않다면 */-->
+				<td th:if="${#authentication.name} ne *{memberid}">
+					<a th:href="|javascript:buyProduct(*{boardnum})|">구매하기</a>
+				</td>
+			</tr>
+		</table>
+		<!--/*  로그인한 유저만 댓글쓰기 가능 >> ajax처리 */-->
+		<div id="reply" sec:authorize="isAuthenticated()">
+			<form>
+				<input type="hidden" th:field="*{boardnum}">
+				<input type="text" name="replytext" id="replytext">
+				<input type="button" id="btn_submit" value="확인">
+			</form>
+		</div>
+		<div id="replyList">
+		</div>
+	</div>
+</body>
+</html>

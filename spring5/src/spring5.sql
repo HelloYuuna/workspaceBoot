@@ -24,6 +24,8 @@ values ('aaa', '111', '차슈', 'aaa@aaa.com', '010-1234-5678', '서울시 녀�
 insert into spring5_member (memberid, memberpw, membername)
 values ('bbb', '222', '콩이');
 
+select *from spring5_member;
+
 
 -- board
 CREATE TABLE spring5_board (

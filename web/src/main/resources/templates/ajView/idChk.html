@@ -12,17 +12,18 @@
     <div class="container">
 		<h2>ID Check</h2>
         <div id="input_field">
-            <form>
+            <form action="join" method="post" th:object="${member}" onsubmit="return nameChk();">
+<!--			아이디 길이 체크	-->
 				<span id="idLenghtChk"></span>
 				<label>ID
-					<input type="text" name="" id="memberid">
-					<input type="button" value="check" id="btn">
+					<input type="text" th:field="*{memberid}"  id="memberid">
+					<input type="button" value="check" class="" id="btn" disabled="disabled">
 				</label>
 				<label>Name
-					<input type="text" name="" id="membername">
+					<input type="text" name="" id="membername" th:field="*{membername}">
 				</label>
 				<div id="submit_area">
-					<input type="submit" value="submit" id="submit" disabled="disabled">
+					<input type="submit" value="submit" class="" id="submit" disabled="disabled">
 					<input type="reset" value="reset" id="reset">
 				</div>
             </form>

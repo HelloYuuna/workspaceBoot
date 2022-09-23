@@ -1,4 +1,7 @@
 GitRepositoriesView.GitDirectories=/Users/yuuna/workspaceBoot/.git\:
 GitRepositoriesView.GitDirectories.relative=.git\:
+RepositorySearchDialogDeepSearch=false
+RepositorySearchDialogSearchPath=/Users/yuuna/test4
+RepositorySearchDialogSkipHidden=true
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
